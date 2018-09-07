@@ -2,7 +2,7 @@ service
 {
 	"PS-PKG-OEM1-01::CV_FINAL_PREDICTED" as "Predicted_Claims"
 	with ( 
-	"Year","Month","Date","PredictedValues","Claims"
+	"Year","Month","PredictedValues","Claims"
 )
 
 	//key("Notification","CustomerID","Year") 
