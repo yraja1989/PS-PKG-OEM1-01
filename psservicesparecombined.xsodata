@@ -1,0 +1,42 @@
+service
+{
+	"PS-PKG-OEM1-01::CV_WARR_SERVICE_SPARE_PARTS" as "Service_Spare_OEM"
+	with ( 
+	"YEAR",
+	"MONTH",
+	"KTX",
+	"DATE_SQL",
+	"Description",
+	"Cust_Name",
+	"Pro_Desc",
+	"Pro_Desc_1",
+	"Total_Claims",
+	"Total_Cost",
+	"Labor_Cost",
+	"Labor_Hours",
+	"Spare_Parts_Qty",
+	"Spare_Parts_Cost",
+	"Avg_Labor_Cost_Per_Claims",
+	"Avg_Labor_Hour_Per_Claims",
+	"Avg_Labor_Cost_Per_Hour"
+	
+)
+
+	//key("Notification","CustomerID","Year") 
+	keys generate local "GenID"  
+	//navigates ( "PS_OEM_CLAIMS" as "OEM_Claims" ) 
+	aggregates always (
+	SUM of "Total_Cost",
+	SUM of "Total_Claims",
+	SUM of "Labor_Cost",
+	SUM of "Labor_Hours",
+	SUM of "Spare_Parts_Qty",
+	SUM of "Spare_Parts_Cost",
+	SUM of "Avg_Labor_Cost_Per_Claims",
+	SUM of "Avg_Labor_Hour_Per_Claims",
+	SUM of "Avg_Labor_Cost_Per_Hour"
+	);
+	
+	
+	
+} annotations {   enable OData4SAP;}

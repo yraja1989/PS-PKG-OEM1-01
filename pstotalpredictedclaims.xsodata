@@ -1,0 +1,44 @@
+service
+{
+	"PS-PKG-OEM1-01::CV_PS_PAL_TOTAL_CLAIMS" as "Total_Predicted_Claims"
+	with ( 
+	"Year","Month","CC_Month_LastDate","Projected","Actual")
+	keys generate local "GenID"
+	aggregates always (SUM of "Actual",SUM of "Projected");
+	"PS-PKG-OEM1-01::CV_PS_PAL_AC_CLAIMS" as "AC_Predicted_Claims"
+	with ( 
+	"Year","Month","Pro_Desc","CC_Month_LastDate","Projected","Actual")
+	keys generate local "GenID"
+	aggregates always (SUM of "Actual",SUM of "Projected");
+	
+	"PS-PKG-OEM1-01::CV_PS_PAL_AIRBAG_CLAIMS" as "Airbag_Predicted_Claims"
+	with ( 
+	"Year","Month","Pro_Desc","CC_Month_LastDate","Projected","Actual")
+	keys generate local "GenID"  
+	aggregates always (SUM of "Actual",SUM of "Projected");
+	
+	"PS-PKG-OEM1-01::CV_PS_PAL_ALIGNMENT_CLAIMS" as "Alignment_Predicted_Claims"
+	with ( 
+	"Year","Month","Pro_Desc","CC_Month_LastDate","Projected","Actual")
+	keys generate local "GenID"   
+	aggregates always (SUM of "Actual",SUM of "Projected");
+	
+	"PS-PKG-OEM1-01::CV_PS_PAL_DRIVETRAIN_CLAIMS" as "Drivetrain_Predicted_Claims"
+	with ( 
+	"Year","Month","Pro_Desc","CC_Month_LastDate","Projected","Actual")
+	keys generate local "GenID"   
+	aggregates always (SUM of "Actual",SUM of "Projected");
+	
+	"PS-PKG-OEM1-01::CV_PS_PAL_BRAKE_CLAIMS" as "Brake_Predicted_Claims"
+	with ( 
+	"Year","Month","Pro_Desc","CC_Month_LastDate","Projected","Actual")
+	keys generate local "GenID"  
+	aggregates always (SUM of "Actual",SUM of "Projected");
+	
+	"PS-PKG-OEM1-01::CV_PS_PAL_ENGINE_CLAIMS" as "Engine_Predicted_Claims"
+	with ( 
+	"Year","Month","Pro_Desc","CC_Month_LastDate","Projected","Actual")
+	keys generate local "GenID"   
+	aggregates always (SUM of "Actual",SUM of "Projected");
+	
+}annotations {   enable OData4SAP;}

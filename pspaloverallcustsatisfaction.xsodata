@@ -1,0 +1,12 @@
+service
+{
+	"PS-PKG-OEM1-01::CV_PAL_OVERALL_CUST_SATISFACTION" as "Overall_Customer_Satisfaction"
+	with ( 
+             "SERVICE_TYPE","CUSTOMER_NOT_SATISFIED","DEALER","REGION","Not_Satisfied","Satisfied")
+
+	//key("NOTIF_ID","CustomerID","Year") 
+	keys generate local "GenID"  
+	//navigates ( "PS_OEM_CLAIMS" as "CURRENT_EVAL" ) 
+	aggregates always (SUM of "Not_Satisfied",SUM of "Satisfied");
+
+} annotations {   enable OData4SAP;}      

@@ -1,0 +1,17 @@
+FUNCTION "PS_WARRANTY_ANALYTICS"."PS-PKG-OEM1-01::PAS_TF_PAL_AC_CLAIMS" ( ) 
+	RETURNS TABLE (
+	"Year" INTEGER,
+	"Month" INTEGER,
+	"CC_Month_LastDate" NVARCHAR(5000),
+	"Claims" INTEGER,
+	"Pro_Desc" NVARCHAR(40),
+	"PredictedValues" INTEGER)
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER AS
+BEGIN
+/***************************** 
+	Write your function logic
+ *****************************/
+  return
+ select * from "PS_WARRANTY_ANALYTICS"."VIEW_PROC_PAL_AC_CLAIMS";
+END;

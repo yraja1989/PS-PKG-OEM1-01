@@ -1,0 +1,43 @@
+service
+{
+	"PS-PKG-OEM1-01::AN_PS_OEM1_SALES_01" as "TotalSales"
+	with ("Billing_Odr_ID","Cust_ID","Cust_Name","Sales_Qty","ProID","REGION","STATE","COUNTRY","CITY","YEAR","Sales_Value","Currency","Units","DATE_SQL","Pro_Desc")
+	 keys generate local "GenID"
+	//key ("Billing_Odr_ID","CustomerID")    
+//	navigates("Customer_Sales" as "CustSales")
+	aggregates always (SUM of "Sales_Qty",SUM of "Sales_Value");
+	
+	//"PS_PKG_OEM_01::AN_PS_OEM1_SALES_01" as "CustSales"
+  //  with ( "Billing_Odr_ID","CustomerID","Dealers","Sales_Qty","Model","Region","State","Country","City","Year","Sales_Value","Currency","Units","D_DATE_SQL")
+   // keys generate local "GenID"
+    //key ("CustomerID")
+  //  navigates("Model_Sales" as "ProdSales")
+  //  aggregates always (SUM of "Sales_Qty",SUM of "Sales_Value");
+    
+  //  "PS_PKG_OEM_01::AN_PS_OEM1_SALES_01" as "ProdSales"
+  //  with ("Pro_ID","Billing_Odr_ID","CustomerID","Dealers","Sales_Qty","Model","Region","State","Country","City","Year","Sales_Value","Currency","Units","D_DATE_SQL")
+  //  keys generate local "GenID"
+    //key("CustomerID","Pro_ID","D_YEAR","D_STATE","D_REGION")
+ //   aggregates always (SUM of "Sales_Qty",SUM of "Sales_Value");
+    
+ //   "PKG_OEM_001_AUTH::AT_CUSTOMER" as "CustDetails"
+   // with ("CustomerID","Cust_Name","D_STATE","D_REGION","D_COUNTRY")
+   // key("CustomerID","Cust_Name");
+
+   // "Customer_Deatils" as "CustDetails"
+    //association "Customer_Deatils"
+    // principal "CustDetails" ("CustomerID")  multiplicity "1"
+     //dependent "CustSales" ("CustomerID" )   multiplicity "*";
+
+
+    
+  //  association "Customer_Sales"
+  //   principal "TotalSales" ("CustomerID")  multiplicity "1"
+ //    dependent "CustSales" ("CustomerID" )   multiplicity "*";
+     
+//    association "Model_Sales"
+ //    principal "CustSales" ("CustomerID")  multiplicity "1"
+   //  dependent "ProdSales" ("CustomerID")   multiplicity "*";
+    
+
+}annotations {   enable OData4SAP;}

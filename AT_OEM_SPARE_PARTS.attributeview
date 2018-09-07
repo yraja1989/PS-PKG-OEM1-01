@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dimension:dimension xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="AT_OEM_SPARE_PARTS" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="internal" dimensionType="Standard">
+  <origin/>
+  <descriptions defaultDescription="AT_OEM_SPARE_PARTS"/>
+  <metadata changedAt="2017-07-25 15:19:00.513" createdAt="2017-07-25 15:19:00.513"/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <attributes>
+    <attribute id="ProID" key="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="SpareParts_ID"/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_PRODUCT" columnName="ProID"/>
+    </attribute>
+    <attribute id="Pro_Desc" order="2" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Spare_Parts"/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_PRODUCT" columnName="Pro_Desc"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <privateDataFoundation>
+    <tableProxies>
+      <tableProxy>
+        <table schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_PRODUCT"/>
+        <columnFilter columnName="ProID">
+          <valueFilter xsi:type="AccessControl:ListValueFilter" operator="IN" including="true">
+            <operands value="000000006709900101"/>
+            <operands value="000000006709900102"/>
+            <operands value="000000006709900103"/>
+            <operands value="000000006709900105"/>
+            <operands value="000000006709900106"/>
+            <operands value="000000006709900107"/>
+            <operands value="000000006709900108"/>
+            <operands value="000000006709900109"/>
+            <operands value="000000006709900110"/>
+            <operands value="000000006709900111"/>
+            <operands value="000000006709900112"/>
+            <operands value="000000006709900113"/>
+            <operands value="000000006709900114"/>
+            <operands value="000000006709900115"/>
+            <operands value="000000006709900116"/>
+            <operands value="000000006709900117"/>
+            <operands value="000000006709900118"/>
+            <operands value="000000006709900119"/>
+            <operands value="000000006709900120"/>
+            <operands value="000000006709900121"/>
+            <operands value="000000006709900122"/>
+            <operands value="000000006709900123"/>
+            <operands value="000000006709900124"/>
+            <operands value="000000006709900125"/>
+            <operands value="000000006709900126"/>
+            <operands value="000000006709900127"/>
+            <operands value="000000006709900128"/>
+            <operands value="000000006709900129"/>
+            <operands value="000000006709900130"/>
+            <operands value="000000006709900131"/>
+            <operands value="000000006709900132"/>
+            <operands value="000000006709900133"/>
+            <operands value="000000006709900134"/>
+            <operands value="000000006709900135"/>
+            <operands value="000000006709900136"/>
+            <operands value="000000006709900137"/>
+            <operands value="000000006709900138"/>
+            <operands value="000000006709900139"/>
+            <operands value="000000006709900140"/>
+            <operands value="000000006709900141"/>
+            <operands value="000000006709900142"/>
+          </valueFilter>
+        </columnFilter>
+      </tableProxy>
+    </tableProxies>
+    <joins/>
+    <layout>
+      <shapes>
+        <shape modelObjectName="PS_TB_PRODUCT" modelObjectNameSpace="PS_WARRANTY_ANALYTICS" modelObjectType="catalog">
+          <upperLeftCorner x="70" y="30"/>
+        </shape>
+        <shape modelObjectName="DataFoundation" modelObjectNameSpace="DataFoundation" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateDataFoundation>
+  <hierarchies/>
+</Dimension:dimension>

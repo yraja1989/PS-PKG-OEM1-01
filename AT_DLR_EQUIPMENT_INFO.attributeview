@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dimension:dimension xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="AT_DLR_EQUIPMENT_INFO" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="internal" dimensionType="Standard">
+  <origin/>
+  <descriptions defaultDescription="AT_DLR_EQUIPMENT"/>
+  <metadata changedAt="2018-03-29 19:23:59.188" createdAt="2018-03-29 19:23:59.188"/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <attributes>
+    <attribute id="Equipment_ID" key="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_DLR_EQUIP" columnName="Equipment"/>
+    </attribute>
+    <attribute id="Model_Number" order="2" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Model_ID"/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_DLR_EQUIP" columnName="Model_Number"/>
+    </attribute>
+    <attribute id="Object_Number" order="3" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_DLR_EQUIP" columnName="Object_Number"/>
+    </attribute>
+    <attribute id="Description" order="4" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Model"/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_DLR_EQUIP" columnName="Description"/>
+    </attribute>
+    <attribute id="Month_Of_Construction" order="5" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_DLR_EQUIP" columnName="Month_Of_Construction"/>
+    </attribute>
+    <attribute id="Year_Of_Construction" order="6" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_DLR_EQUIP" columnName="Year_Of_Construction"/>
+    </attribute>
+    <attribute id="Manuf_SerialNo" order="7" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_DLR_EQUIP" columnName="Manuf_SerialNo"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <privateDataFoundation>
+    <tableProxies>
+      <tableProxy>
+        <table schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_DLR_EQUIP"/>
+      </tableProxy>
+    </tableProxies>
+    <joins/>
+    <layout>
+      <shapes>
+        <shape modelObjectName="PS_TB_DLR_EQUIP" modelObjectNameSpace="PS_WARRANTY_ANALYTICS" modelObjectType="catalog">
+          <upperLeftCorner x="70" y="30"/>
+        </shape>
+        <shape modelObjectName="DataFoundation" modelObjectNameSpace="DataFoundation" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateDataFoundation>
+  <hierarchies/>
+</Dimension:dimension>

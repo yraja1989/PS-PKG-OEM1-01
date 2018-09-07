@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dimension:dimension xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="AT_OEM_SERVICE_TYPE" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="internal" dimensionType="Standard">
+  <origin/>
+  <descriptions defaultDescription="AT_OEM_SERVICE_TYPE"/>
+  <metadata changedAt="2017-10-12 15:51:00.677"/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <attributes>
+    <attribute id="ProID" key="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="ServiceType_ID"/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_PRODUCT" columnName="ProID"/>
+    </attribute>
+    <attribute id="Pro_Desc" order="2" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Service Type"/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_PRODUCT" columnName="Pro_Desc"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <privateDataFoundation>
+    <tableProxies>
+      <tableProxy>
+        <table schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_PRODUCT"/>
+        <columnFilter columnName="ProID">
+          <valueFilter xsi:type="AccessControl:ListValueFilter" operator="IN" including="true">
+            <operands value="000000092902509167"/>
+            <operands value="000000093265109642"/>
+            <operands value="000000094051853810"/>
+            <operands value="000000096172572025"/>
+            <operands value="000000097630138619"/>
+            <operands value="000000098267100784"/>
+            <operands value="000000098267100789"/>
+          </valueFilter>
+        </columnFilter>
+      </tableProxy>
+    </tableProxies>
+    <joins/>
+    <layout>
+      <shapes>
+        <shape modelObjectName="PS_TB_PRODUCT" modelObjectNameSpace="PS_WARRANTY_ANALYTICS" modelObjectType="catalog">
+          <upperLeftCorner x="70" y="30"/>
+        </shape>
+        <shape modelObjectName="DataFoundation" modelObjectNameSpace="DataFoundation" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateDataFoundation>
+  <hierarchies/>
+</Dimension:dimension>

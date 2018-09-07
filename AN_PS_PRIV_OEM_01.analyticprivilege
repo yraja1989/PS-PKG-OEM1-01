@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Privilege:analyticPrivilege xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Privilege="http://www.sap.com/ndb/BiModelPrivilege.ecore" schemaVersion="1.1" id="AN_PS_PRIV_OEM_01" privilegeType="ANALYTIC_PRIVILEGE">
+  <origin/>
+  <descriptions defaultDescription="AN_PRIV_OEM_01"/>
+  <metadata changedAt="2018-07-06 17:00:56.539" createdAt="2017-07-25 15:18:08.872"/>
+  <securedModels allInformationModels="false">
+    <modelUri>/PS-PKG-OEM1-01/analyticviews/AN_PS_OEM1_SALES_01</modelUri>
+    <modelUri>/PS-PKG-OEM1-01/analyticviews/AN_PS_OEM1_SER_ODR_SPARE_PARTS_01</modelUri>
+    <modelUri>/PS-PKG-OEM1-01/analyticviews/AN_PS_OEM1_SER_ORD_SERVICE_MAT</modelUri>
+    <modelUri>/PS-PKG-OEM1-01/calculationviews/CV_WARR_SERVICE_SPARE_PARTS</modelUri>
+    <modelUri>/PS-PKG-OEM1-01/calculationviews/CV_PAL_OVERALL_CUST_SATISFACTION</modelUri>
+    <modelUri>/PS-PKG-OEM1-01/calculationviews/CV_PAL_CUST_SATISFACTION</modelUri>
+  </securedModels>
+</Privilege:analyticPrivilege>

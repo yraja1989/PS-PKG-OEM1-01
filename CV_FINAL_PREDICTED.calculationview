@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="CV_FINAL_PREDICTED" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
+  <origin/>
+  <descriptions defaultDescription="CV_FINAL_PREDICTED"/>
+  <metadata changedAt="2018-03-20 14:55:04.893" createdAt="2018-03-20 14:55:04.893"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="35"/>
+  <dataSources>
+    <DataSource id="Expert_AN_TESM_001" type="TABLE_FUNCTION">
+      <resourceUri>PS-PKG-OEM1-01::Expert_AN_TESM_001</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="Expert_AN_TESM_001">
+    <descriptions/>
+    <attributes>
+      <attribute id="Year" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Year"/>
+        <keyMapping columnObjectName="Expert_AN_TESM_001" columnName="Year"/>
+      </attribute>
+      <attribute id="Month" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Month"/>
+        <keyMapping columnObjectName="Expert_AN_TESM_001" columnName="Month"/>
+      </attribute>
+      <attribute id="Date" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Date"/>
+        <keyMapping columnObjectName="Expert_AN_TESM_001" columnName="Date"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="Claims" order="3" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Total Claims"/>
+        <measureMapping columnObjectName="Expert_AN_TESM_001" columnName="Claims"/>
+      </measure>
+      <measure id="PredictedValues" order="5" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Predicted Claims"/>
+        <measureMapping columnObjectName="Expert_AN_TESM_001" columnName="PredictedValues"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

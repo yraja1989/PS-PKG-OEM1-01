@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="CV_PROJECTED_CLAIMS_SERVICE_TYPE" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
+  <descriptions defaultDescription="Projected Claims By Service Type"/>
+  <metadata changedAt="2018-08-17 12:50:47.283"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="63"/>
+  <dataSources>
+    <DataSource id="CV_PS_PAL_AC_CLAIMS" type="CALCULATION_VIEW">
+      <viewAttributes allViewAttributes="true"/>
+      <resourceUri>/PS-PKG-OEM1-01/calculationviews/CV_PS_PAL_AC_CLAIMS</resourceUri>
+    </DataSource>
+    <DataSource id="CV_PS_PAL_AIRBAG_CLAIMS" type="CALCULATION_VIEW">
+      <viewAttributes allViewAttributes="true"/>
+      <resourceUri>/PS-PKG-OEM1-01/calculationviews/CV_PS_PAL_AIRBAG_CLAIMS</resourceUri>
+    </DataSource>
+    <DataSource id="CV_PS_PAL_ALIGNMENT_CLAIMS" type="CALCULATION_VIEW">
+      <viewAttributes allViewAttributes="true"/>
+      <resourceUri>/PS-PKG-OEM1-01/calculationviews/CV_PS_PAL_ALIGNMENT_CLAIMS</resourceUri>
+    </DataSource>
+    <DataSource id="CV_PS_PAL_BRAKE_CLAIMS" type="CALCULATION_VIEW">
+      <viewAttributes allViewAttributes="true"/>
+      <resourceUri>/PS-PKG-OEM1-01/calculationviews/CV_PS_PAL_BRAKE_CLAIMS</resourceUri>
+    </DataSource>
+    <DataSource id="CV_PS_PAL_DRIVETRAIN_CLAIMS" type="CALCULATION_VIEW">
+      <viewAttributes allViewAttributes="true"/>
+      <resourceUri>/PS-PKG-OEM1-01/calculationviews/CV_PS_PAL_DRIVETRAIN_CLAIMS</resourceUri>
+    </DataSource>
+    <DataSource id="CV_PS_PAL_ENGINE_CLAIMS" type="CALCULATION_VIEW">
+      <viewAttributes allViewAttributes="true"/>
+      <resourceUri>/PS-PKG-OEM1-01/calculationviews/CV_PS_PAL_ENGINE_CLAIMS</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="Actual"/>
+        <viewAttribute id="CC_Month_LastDate"/>
+        <viewAttribute id="Month"/>
+        <viewAttribute id="Pro_Desc"/>
+        <viewAttribute id="Projected"/>
+        <viewAttribute id="Year"/>
+        <viewAttribute id="CC_AC_Service_Type"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CV_PS_PAL_AC_CLAIMS">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Actual" source="Actual"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Month_LastDate" source="CC_Month_LastDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Month" source="Month"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="Pro_Desc"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Projected" source="Projected"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year" source="Year"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_AC_Service_Type" source="CC_AC_Service_Type"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="Actual"/>
+        <viewAttribute id="CALMONTH"/>
+        <viewAttribute id="CC_Month_LastDate"/>
+        <viewAttribute id="Month"/>
+        <viewAttribute id="Pro_Desc"/>
+        <viewAttribute id="Projected"/>
+        <viewAttribute id="Year"/>
+        <viewAttribute id="CC_Airbag_Service_Type"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CV_PS_PAL_AIRBAG_CLAIMS">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Actual" source="Actual"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Month_LastDate" source="CC_Month_LastDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Month" source="Month"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="Pro_Desc"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Projected" source="Projected"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year" source="Year"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Airbag_Service_Type" source="CC_Airbag_Service_Type"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="Actual"/>
+        <viewAttribute id="CALMONTH"/>
+        <viewAttribute id="CC_Month_LastDate"/>
+        <viewAttribute id="Month"/>
+        <viewAttribute id="Pro_Desc"/>
+        <viewAttribute id="Projected"/>
+        <viewAttribute id="Year"/>
+        <viewAttribute id="CC_Alignment_Service_Type"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CV_PS_PAL_ALIGNMENT_CLAIMS">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Actual" source="Actual"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Month_LastDate" source="CC_Month_LastDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Month" source="Month"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="Pro_Desc"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Projected" source="Projected"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year" source="Year"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Alignment_Service_Type" source="CC_Alignment_Service_Type"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="Actual"/>
+        <viewAttribute id="CALMONTH"/>
+        <viewAttribute id="CC_Month_LastDate"/>
+        <viewAttribute id="Month"/>
+        <viewAttribute id="Pro_Desc"/>
+        <viewAttribute id="Projected"/>
+        <viewAttribute id="Year"/>
+        <viewAttribute id="CC_Brake_Service_Type"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CV_PS_PAL_BRAKE_CLAIMS">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Actual" source="Actual"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Month_LastDate" source="CC_Month_LastDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Month" source="Month"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="Pro_Desc"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Projected" source="Projected"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year" source="Year"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Brake_Service_Type" source="CC_Brake_Service_Type"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_5">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="Actual"/>
+        <viewAttribute id="CALMONTH"/>
+        <viewAttribute id="CC_Month_LastDate"/>
+        <viewAttribute id="Month"/>
+        <viewAttribute id="Pro_Desc"/>
+        <viewAttribute id="Projected"/>
+        <viewAttribute id="Year"/>
+        <viewAttribute id="CC_Drivetrain_Service_Type"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CV_PS_PAL_DRIVETRAIN_CLAIMS">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Actual" source="Actual"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Month_LastDate" source="CC_Month_LastDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Month" source="Month"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="Pro_Desc"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Projected" source="Projected"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year" source="Year"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Drivetrain_Service_Type" source="CC_Drivetrain_Service_Type"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_6">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="Actual"/>
+        <viewAttribute id="CALMONTH"/>
+        <viewAttribute id="CC_Month_LastDate"/>
+        <viewAttribute id="Month"/>
+        <viewAttribute id="Pro_Desc"/>
+        <viewAttribute id="Projected"/>
+        <viewAttribute id="Year"/>
+        <viewAttribute id="CC_Engine_Service_Type"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CV_PS_PAL_ENGINE_CLAIMS">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Actual" source="Actual"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Month_LastDate" source="CC_Month_LastDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Month" source="Month"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="Pro_Desc"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Projected" source="Projected"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year" source="Year"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Engine_Service_Type" source="CC_Engine_Service_Type"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="Month"/>
+        <viewAttribute id="Year"/>
+        <viewAttribute id="Pro_Desc"/>
+        <viewAttribute id="Actual"/>
+        <viewAttribute id="Actual_1"/>
+        <viewAttribute id="Actual_2"/>
+        <viewAttribute id="Actual_3"/>
+        <viewAttribute id="Actual_4"/>
+        <viewAttribute id="Actual_5"/>
+        <viewAttribute id="Projected"/>
+        <viewAttribute id="Projected_1"/>
+        <viewAttribute id="Projected_2"/>
+        <viewAttribute id="Projected_3"/>
+        <viewAttribute id="Projected_4"/>
+        <viewAttribute id="Projected_5"/>
+      
+        <viewAttribute id="All_Actual_Claims"/>
+        <viewAttribute id="All_Projected_Claims"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Month" source="Month"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year" source="Year"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Actual" source="Actual"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual_2" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual_3" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual_4" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual_5" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Projected" source="Projected"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected_2" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected_3" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected_4" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected_5" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="CC_AC_Service_Type"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="All_Actual_Claims" source="Actual"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="All_Projected_Claims" source="Projected"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Month" source="Month"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year" source="Year"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Actual_1" source="Actual"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual_2" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual_3" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual_4" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual_5" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Projected_1" source="Projected"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected_2" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected_3" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected_4" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected_5" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="CC_Airbag_Service_Type"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="All_Actual_Claims" source="Actual"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="All_Projected_Claims" source="Projected"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Month" source="Month"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year" source="Year"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Actual_2" source="Actual"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual_3" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual_4" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual_5" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Projected_2" source="Projected"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected_3" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected_4" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected_5" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="CC_Alignment_Service_Type"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="All_Actual_Claims" source="Actual"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="All_Projected_Claims" source="Projected"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Projection_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Month" source="Month"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year" source="Year"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual_2" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Actual_3" source="Actual"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual_4" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual_5" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected_2" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Projected_3" source="Projected"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected_4" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected_5" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="CC_Brake_Service_Type"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="All_Actual_Claims" source="Actual"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="All_Projected_Claims" source="Projected"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Projection_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Month" source="Month"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year" source="Year"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual_2" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual_3" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Actual_4" source="Actual"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual_5" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected_2" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected_3" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Projected_4" source="Projected"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected_5" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="CC_Drivetrain_Service_Type"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="All_Actual_Claims" source="Actual"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="All_Projected_Claims" source="Projected"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Projection_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Month" source="Month"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year" source="Year"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual_2" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual_3" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Actual_4" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Actual_5" source="Actual"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected_2" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected_3" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Projected_4" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Projected_5" source="Projected"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="CC_Engine_Service_Type"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="All_Actual_Claims" source="Actual"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="All_Projected_Claims" source="Projected"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Union_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="Month" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Month"/>
+        <keyMapping columnObjectName="Union_1" columnName="Month"/>
+      </attribute>
+      <attribute id="Year" order="2" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Year"/>
+        <keyMapping columnObjectName="Union_1" columnName="Year"/>
+      </attribute>
+      <attribute id="Pro_Desc" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Service Type"/>
+        <keyMapping columnObjectName="Union_1" columnName="Pro_Desc"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="AC_Actual_Claims" order="4" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="A/C Actual Claims"/>
+        <measureMapping columnObjectName="Union_1" columnName="Actual"/>
+      </measure>
+      <measure id="Airbag_Actual_Claims" order="5" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Airbag Actual Claims"/>
+        <measureMapping columnObjectName="Union_1" columnName="Actual_1"/>
+      </measure>
+      <measure id="Alignment_Actual_Claims" order="6" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Alignment Actual Claims"/>
+        <measureMapping columnObjectName="Union_1" columnName="Actual_2"/>
+      </measure>
+      <measure id="Brake_Actual_Claims" order="7" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Brake Actual Claims"/>
+        <measureMapping columnObjectName="Union_1" columnName="Actual_3"/>
+      </measure>
+      <measure id="Drivetrain_Actual_Claims" order="8" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Drivetrain Actual Claims"/>
+        <measureMapping columnObjectName="Union_1" columnName="Actual_4"/>
+      </measure>
+      <measure id="Engine_Actual_Claims" order="9" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Engine Actual Claims"/>
+        <measureMapping columnObjectName="Union_1" columnName="Actual_5"/>
+      </measure>
+      <measure id="Airbag_Projected_Claims" order="10" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Airbag Projected Claims"/>
+        <measureMapping columnObjectName="Union_1" columnName="Projected_1"/>
+      </measure>
+      <measure id="Alignment_Projected_Claims" order="11" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Alignment Projected Claims"/>
+        <measureMapping columnObjectName="Union_1" columnName="Projected_2"/>
+      </measure>
+      <measure id="Brake_Projected_Claims" order="12" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Brake Projected Claims"/>
+        <measureMapping columnObjectName="Union_1" columnName="Projected_3"/>
+      </measure>
+      <measure id="Drivetrain_Projected_Claims" order="13" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Drivetrain Projected Claims"/>
+        <measureMapping columnObjectName="Union_1" columnName="Projected_4"/>
+      </measure>
+      <measure id="Engine_Projected_Claims" order="14" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Engine Projected Claims"/>
+        <measureMapping columnObjectName="Union_1" columnName="Projected_5"/>
+      </measure>
+      <measure id="AC_Projected_Claims" order="15" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="A/C Projected Claims"/>
+        <measureMapping columnObjectName="Union_1" columnName="Projected"/>
+      </measure>
+    
+      <measure id="All_Actual_Claims" order="16" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="All_Actual_Claims"/>
+        <measureMapping columnObjectName="Union_1" columnName="All_Actual_Claims"/>
+      </measure>
+      <measure id="All_Projected_Claims" order="17" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="All_Projected_Claims"/>
+        <measureMapping columnObjectName="Union_1" columnName="All_Projected_Claims"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="407" y="87"/></shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="353"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="353"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="330" y="353"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="484" y="353"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="638" y="353"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="792" y="353"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="407" y="165"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

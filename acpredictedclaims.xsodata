@@ -1,0 +1,15 @@
+service
+{
+	"PS-PKG-OEM1-01::CV_PREDICTED_AC_CLAIMS" as "Predicted_Claims"
+	with ( 
+	"YEAR","MONTH","QUARTER","WEEK","CALWEEK","TIMESTAMP","Predicted_Claims","Total_Claims"
+)
+
+	//key("Notification","CustomerID","Year") 
+	keys generate local "GenID"  
+	//navigates ( "PS_OEM_CLAIMS" as "OEM_Claims" ) 
+	aggregates always (SUM of "Total_Claims",SUM of "Predicted_Claims");
+	
+	
+	
+}annotations {   enable OData4SAP;}

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="CV_PS_PAL_TOTAL_CLAIMS" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
+  <origin/>
+  <descriptions defaultDescription="CV_PS_PAL_TOTAL_CLAIMS"/>
+  <metadata changedAt="2018-04-02 12:04:50.286"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="36"/>
+  <dataSources>
+    <DataSource id="PAS_TF_PAL_TOTAL_CLAIMS" type="TABLE_FUNCTION">
+      <resourceUri>PS-PKG-OEM1-01::PAS_TF_PAL_TOTAL_CLAIMS</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="PAS_TF_PAL_TOTAL_CLAIMS">
+    <descriptions/>
+    <attributes>
+      <attribute id="Year" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Year"/>
+        <keyMapping columnObjectName="PAS_TF_PAL_TOTAL_CLAIMS" columnName="Year"/>
+      </attribute>
+      <attribute id="Month" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Month"/>
+        <keyMapping columnObjectName="PAS_TF_PAL_TOTAL_CLAIMS" columnName="Month"/>
+      </attribute>
+      <attribute id="CALMONTH" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CALMONTH"/>
+        <keyMapping columnObjectName="PAS_TF_PAL_TOTAL_CLAIMS" columnName="CALMONTH"/>
+      </attribute>
+      <attribute id="CC_Month_LastDate" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CC_Month_LastDate"/>
+        <keyMapping columnObjectName="PAS_TF_PAL_TOTAL_CLAIMS" columnName="CC_Month_LastDate"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="Actual" order="5" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Actual"/>
+        <measureMapping columnObjectName="PAS_TF_PAL_TOTAL_CLAIMS" columnName="Claims"/>
+      </measure>
+      <measure id="Projected" order="6" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Projected"/>
+        <measureMapping columnObjectName="PAS_TF_PAL_TOTAL_CLAIMS" columnName="PredictedValues"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dimension:dimension xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="AT_OEM_CLAIM_TIME" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="internal" dimensionType="Standard">
+  <origin/>
+  <descriptions defaultDescription="AT_OEM_CLAIM_TIME"/>
+  <metadata changedAt="2018-08-10 10:40:50.423"/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <attributes>
+    <attribute id="YEAR" key="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Year"/>
+      <keyMapping schemaName="_SYS_BI" columnObjectName="M_TIME_DIMENSION" columnName="YEAR"/>
+    </attribute>
+    <attribute id="QUARTER" key="true" order="2" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Quarter"/>
+      <keyMapping schemaName="_SYS_BI" columnObjectName="M_TIME_DIMENSION" columnName="QUARTER"/>
+    </attribute>
+    <attribute id="MONTH" hidden="false" key="true" order="3" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="OEM NotifMonth_Num"/>
+      <keyMapping schemaName="_SYS_BI" columnObjectName="M_TIME_DIMENSION" columnName="MONTH"/>
+    </attribute>
+    <attribute id="WEEK" key="true" order="4" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="OEM NotifWeek"/>
+      <keyMapping schemaName="_SYS_BI" columnObjectName="M_TIME_DIMENSION" columnName="WEEK"/>
+    </attribute>
+    <attribute id="DATE_SQL" key="true" order="5" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Date"/>
+      <keyMapping schemaName="_SYS_BI" columnObjectName="M_TIME_DIMENSION" columnName="DATE_SQL"/>
+    </attribute>
+    <attribute id="KTX" order="6" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Month"/>
+      <keyMapping schemaName="PS_RY_SQL_SCRIPT_DEMO" columnObjectName="PKG_CSSO::PS_REPLICATION_T247.PS_Month_T247" columnName="KTX"/>
+    </attribute>
+    <attribute id="LTX" order="7" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Month"/>
+      <keyMapping schemaName="PS_RY_SQL_SCRIPT_DEMO" columnObjectName="PKG_CSSO::PS_REPLICATION_T247.PS_Month_T247" columnName="LTX"/>
+    </attribute>
+    <attribute id="CALMONTH" order="8" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="OEM NotifCalMonth"/>
+      <keyMapping schemaName="_SYS_BI" columnObjectName="M_TIME_DIMENSION" columnName="CALMONTH"/>
+    </attribute>
+    <attribute id="DAY_OF_WEEK_INT" order="9" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="DAY_OF_WEEK_INT"/>
+      <keyMapping schemaName="_SYS_BI" columnObjectName="M_TIME_DIMENSION" columnName="DAY_OF_WEEK_INT"/>
+    </attribute>
+    <attribute id="CALWEEK" order="10" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="CALWEEK"/>
+      <keyMapping schemaName="_SYS_BI" columnObjectName="M_TIME_DIMENSION" columnName="CALWEEK"/>
+    </attribute>
+    <attribute id="MONTH_INT" order="11" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Month Int"/>
+      <keyMapping schemaName="_SYS_BI" columnObjectName="M_TIME_DIMENSION" columnName="MONTH_INT"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <privateDataFoundation>
+    <tableProxies>
+      <tableProxy>
+        <table schemaName="_SYS_BI" columnObjectName="M_TIME_DIMENSION"/>
+      </tableProxy>
+      <tableProxy>
+        <table schemaName="PS_RY_SQL_SCRIPT_DEMO" columnObjectName="PKG_CSSO::PS_REPLICATION_T247.PS_Month_T247"/>
+      </tableProxy>
+    </tableProxies>
+    <joins>
+      <join>
+        <leftTable schemaName="_SYS_BI" columnObjectName="M_TIME_DIMENSION"/>
+        <rightTable schemaName="PS_RY_SQL_SCRIPT_DEMO" columnObjectName="PKG_CSSO::PS_REPLICATION_T247.PS_Month_T247"/>
+        <leftColumns>
+          <columnName>MONTH</columnName>
+        </leftColumns>
+        <rightColumns>
+          <columnName>MNR</columnName>
+        </rightColumns>
+        <properties joinOperator="Equal" joinType="referential"/>
+      </join>
+    </joins>
+    <layout>
+      <shapes>
+        <shape modelObjectName="M_TIME_DIMENSION" modelObjectNameSpace="_SYS_BI" modelObjectType="catalog">
+          <upperLeftCorner x="70" y="30"/>
+        </shape>
+        <shape modelObjectName="PKG_CSSO::PS_REPLICATION_T247.PS_Month_T247" modelObjectNameSpace="PS_RY_SQL_SCRIPT_DEMO" modelObjectType="catalog">
+          <upperLeftCorner x="340" y="30"/>
+        </shape>
+        <shape modelObjectName="DataFoundation" modelObjectNameSpace="DataFoundation" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateDataFoundation>
+  <hierarchies>
+    <hierarchy xsi:type="Dimension:LeveledHierarchy" id="Year_hier" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_ONLY">
+      <descriptions defaultDescription="Year_hier"/>
+      <unassignedMemberProperties>
+        <name xsi:nil="true"/>
+        <nullConvertValue xsi:nil="true"/>
+      </unassignedMemberProperties>
+      <levels>
+        <level levelAttribute="#YEAR" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="#YEAR"/>
+        <level levelAttribute="#QUARTER" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="#QUARTER"/>
+        <level levelAttribute="#MONTH" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="#MONTH"/>
+        <level levelAttribute="#WEEK" levelType="MDLEVEL_TYPE_REGULAR" order="4" orderAttribute="#WEEK"/>
+        <level levelAttribute="#DATE_SQL" levelType="MDLEVEL_TYPE_REGULAR" order="5" orderAttribute="#YEAR"/>
+      </levels>
+    </hierarchy>
+  </hierarchies>
+</Dimension:dimension>

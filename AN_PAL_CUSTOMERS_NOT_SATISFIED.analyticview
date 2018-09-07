@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Cube:cube xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Cube="http://www.sap.com/ndb/BiModelCube.ecore" schemaVersion="1.5" id="AN_PAL_CUSTOMERS_NOT_SATISFIED" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled">
+  <origin/>
+  <descriptions defaultDescription="AN_PAL_CUSTOMERS_NOT_SATISFIED"/>
+  <metadata changedAt="2018-03-30 17:42:11.602"/>
+  <localVariables/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <privateMeasureGroup id="MeasureGroup">
+    <attributes>
+      <attribute id="NOTIF_ID" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NOTIF_ID"/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_PAL_TB_CUST_SATISFACTION" columnName="NOTIF_ID"/>
+      </attribute>
+      <attribute id="SERVICE_TYPE" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SERVICE_TYPE"/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_PAL_TB_CUST_SATISFACTION" columnName="SERVICE_TYPE"/>
+      </attribute>
+      <attribute id="CUSTOMER_NOT_SATISFIED" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CUSTOMER_NOT_SATISFIED"/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_PAL_TB_CUST_SATISFACTION" columnName="CUSTOMER/NOT_SATISFIED"/>
+      </attribute>
+      <attribute id="DEALER" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DEALER"/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_PAL_TB_CUST_SATISFACTION" columnName="DEALER"/>
+      </attribute>
+      <attribute id="REGION" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="REGION"/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_PAL_TB_CUST_SATISFACTION" columnName="REGION"/>
+      </attribute>
+      <attribute id="CONSUMER_ID" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CONSUMER_ID"/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_PAL_TB_CUST_SATISFACTION" columnName="CONSUMER_ID"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies>
+        <tableProxy centralTable="true">
+          <table schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_PAL_TB_CUST_SATISFACTION"/>
+          <columnFilter columnName="CUSTOMER/NOT_SATISFIED">
+            <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="1"/>
+          </columnFilter>
+        </tableProxy>
+      </tableProxies>
+      <joins/>
+      <layout>
+        <shapes>
+          <shape modelObjectName="PS_PAL_TB_CUST_SATISFACTION" modelObjectNameSpace="PS_WARRANTY_ANALYTICS" modelObjectType="catalog">
+            <upperLeftCorner x="70" y="30"/>
+          </shape>
+        </shapes>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures>
+      <measure id="CC_Cust_Not_Satisfied" hidden="false" order="7" aggregationType="count" engineAggregation="sum" measureType="simple" calculateBeforeAggregation="true" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="CC_Cust_Not_Satisfied"/>
+        <formula>1</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <sharedDimensions/>
+    <layout>
+      <shapes>
+        <shape modelObjectName="MEASURE_GROUP" modelObjectType="repository">
+          <upperLeftCorner x="56" y="42"/>
+        </shape>
+        <shape modelObjectName="LogicalView" modelObjectNameSpace="MeasureGroup" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateMeasureGroup>
+</Cube:cube>

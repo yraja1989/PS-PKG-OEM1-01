@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="CV_PREDICTED_AC_CLAIMS" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
+  <origin/>
+  <descriptions defaultDescription="CV_PREDICTED_AC_CLAIMS"/>
+  <metadata changedAt="2018-03-28 15:55:53.486"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="40"/>
+  <dataSources>
+    <DataSource id="PAL_M_DIMENTION" type="DATA_BASE_TABLE">
+      <viewAttributes allViewAttributes="true"/>
+      <columnObject schemaName="PAL" columnObjectName="PAL_M_DIMENTION"/>
+    </DataSource>
+    <DataSource id="PAL_AC_WEEKLY_CLAIMS" type="DATA_BASE_TABLE">
+      <viewAttributes allViewAttributes="true"/>
+      <columnObject schemaName="PAL" columnObjectName="PAL_AC_WEEKLY_CLAIMS"/>
+    </DataSource>
+    <DataSource id="PAL_FORECASTTRIPLESMOOTHING_RESULT_TBL_AC_WEEKLY" type="DATA_BASE_TABLE">
+      <viewAttributes allViewAttributes="true"/>
+      <columnObject schemaName="PAL" columnObjectName="PAL_FORECASTTRIPLESMOOTHING_RESULT_TBL_AC_WEEKLY"/>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="QUARTER"/>
+        <viewAttribute id="WEEK"/>
+        <viewAttribute id="CALWEEK"/>
+        <viewAttribute id="ID"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#PAL_M_DIMENTION">
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="QUARTER" source="QUARTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WEEK" source="WEEK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALWEEK" source="CALWEEK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="Total_Claims"/>
+        <viewAttribute id="ID"/>
+        <viewAttribute id="Time_Stamp_For_InputTable"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#PAL_AC_WEEKLY_CLAIMS">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_Claims" source="Total_Claims"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Time_Stamp_For_InputTable" source="Time_Stamp_For_InputTable"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinOrder="OUTSIDE_IN" joinType="rightOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="QUARTER"/>
+        <viewAttribute id="WEEK"/>
+        <viewAttribute id="CALWEEK"/>
+        <viewAttribute id="Total_Claims"/>
+        <viewAttribute id="Time_Stamp_For_InputTable"/>
+        <viewAttribute id="ID"/>
+        <viewAttribute hidden="true" id="JOIN$ID$ID"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="QUARTER" source="QUARTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WEEK" source="WEEK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALWEEK" source="CALWEEK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ID$ID" source="ID"/>
+      </input>
+      <input node="#Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_Claims" source="Total_Claims"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Time_Stamp_For_InputTable" source="Time_Stamp_For_InputTable"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ID$ID" source="ID"/>
+      </input>
+      <joinAttribute name="JOIN$ID$ID"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="TIMESTAMP"/>
+        <viewAttribute id="VALUE"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#PAL_FORECASTTRIPLESMOOTHING_RESULT_TBL_AC_WEEKLY">
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP" source="TIMESTAMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALUE" source="VALUE"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinOrder="OUTSIDE_IN" joinType="rightOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="QUARTER"/>
+        <viewAttribute id="WEEK"/>
+        <viewAttribute id="CALWEEK"/>
+        <viewAttribute id="Total_Claims"/>
+        <viewAttribute id="Time_Stamp_For_InputTable"/>
+        <viewAttribute id="ID"/>
+        <viewAttribute id="TIMESTAMP"/>
+        <viewAttribute id="VALUE"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="QUARTER" source="QUARTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WEEK" source="WEEK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALWEEK" source="CALWEEK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_Claims" source="Total_Claims"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Time_Stamp_For_InputTable" source="Time_Stamp_For_InputTable"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      </input>
+      <input node="#Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIMESTAMP" source="TIMESTAMP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VALUE" source="VALUE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Time_Stamp_For_InputTable" source="TIMESTAMP"/>
+      </input>
+      <joinAttribute name="Time_Stamp_For_InputTable"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_2">
+    <descriptions/>
+    <attributes>
+      <attribute id="YEAR" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="YEAR"/>
+        <keyMapping columnObjectName="Join_2" columnName="YEAR"/>
+      </attribute>
+      <attribute id="MONTH" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MONTH"/>
+        <keyMapping columnObjectName="Join_2" columnName="MONTH"/>
+      </attribute>
+      <attribute id="QUARTER" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="QUARTER"/>
+        <keyMapping columnObjectName="Join_2" columnName="QUARTER"/>
+      </attribute>
+      <attribute id="WEEK" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="WEEK"/>
+        <keyMapping columnObjectName="Join_2" columnName="WEEK"/>
+      </attribute>
+      <attribute id="CALWEEK" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CALWEEK"/>
+        <keyMapping columnObjectName="Join_2" columnName="CALWEEK"/>
+      </attribute>
+      <attribute id="Time_Stamp_For_InputTable" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Time_Stamp_For_InputTable"/>
+        <keyMapping columnObjectName="Join_2" columnName="Time_Stamp_For_InputTable"/>
+      </attribute>
+      <attribute id="ID" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ID"/>
+        <keyMapping columnObjectName="Join_2" columnName="ID"/>
+      </attribute>
+      <attribute id="TIMESTAMP" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TIMESTAMP"/>
+        <keyMapping columnObjectName="Join_2" columnName="TIMESTAMP"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="Total_Claims" order="6" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Total Claims"/>
+        <measureMapping columnObjectName="Join_2" columnName="Total_Claims"/>
+      </measure>
+      <measure id="VALUE" order="10" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VALUE"/>
+        <measureMapping columnObjectName="Join_2" columnName="VALUE"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="Predicted_Claims" hidden="false" order="11" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="Predicted Claims"/>
+        <formula>round(&quot;VALUE&quot;,0)</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="30" y="390"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="250" y="380"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="100" y="280"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="320" y="280"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="120" y="180"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

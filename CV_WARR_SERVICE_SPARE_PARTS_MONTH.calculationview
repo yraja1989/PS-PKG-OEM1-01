@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="CV_WARR_SERVICE_SPARE_PARTS_MONTH" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
+  <origin/>
+  <descriptions defaultDescription="CV_WARR_SERVICE_SPARE_PARTS_WEEK"/>
+  <metadata changedAt="2018-04-12 10:36:25.894"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="28"/>
+  <dataSources>
+    <DataSource id="CV_WARR_SERVICE_SPARE_PARTS" type="CALCULATION_VIEW">
+      <viewAttributes allViewAttributes="true"/>
+      <resourceUri>/PS-PKG-OEM1-01/calculationviews/CV_WARR_SERVICE_SPARE_PARTS</resourceUri>
+    </DataSource>
+    <DataSource id="M_TIME_DIMENSION" type="DATA_BASE_TABLE">
+      <viewAttributes allViewAttributes="true"/>
+      <columnObject schemaName="_SYS_BI" columnObjectName="M_TIME_DIMENSION"/>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="Claim"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="QUARTER"/>
+        <viewAttribute id="WEEK"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="DATE_SQL"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="STATE"/>
+        <viewAttribute id="COUNTRY"/>
+        <viewAttribute id="Spare_Parts_Qty"/>
+        <viewAttribute id="Spare_Parts_Cost"/>
+        <viewAttribute id="Pro_Desc"/>
+        <viewAttribute id="Cust_Name"/>
+        <viewAttribute id="Pro_Desc_1"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CV_WARR_SERVICE_SPARE_PARTS">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Claim" source="Claim"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="QUARTER" source="QUARTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WEEK" source="WEEK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE_SQL" source="DATE_SQL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STATE" source="STATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Spare_Parts_Qty" source="Spare_Parts_Qty"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Spare_Parts_Cost" source="Spare_Parts_Cost"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="Pro_Desc"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Cust_Name" source="Cust_Name"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc_1" source="Pro_Desc_1"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CALWEEK"/>
+        <viewAttribute id="DAY_OF_WEEK"/>
+        <viewAttribute id="DATE_SQL"/>
+        <viewAttribute id="MONTH_LAST_DAY"/>
+        <viewAttribute id="DAY"/>
+        <viewAttribute id="CALMONTH"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#M_TIME_DIMENSION">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALWEEK" source="CALWEEK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DAY_OF_WEEK" source="DAY_OF_WEEK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE_SQL" source="DATE_SQL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH_LAST_DAY" source="MONTH_LAST_DAY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DAY" source="DAY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinOrder="OUTSIDE_IN" joinType="referential">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="Claim"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="QUARTER"/>
+        <viewAttribute id="WEEK"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="STATE"/>
+        <viewAttribute id="COUNTRY"/>
+        <viewAttribute id="Spare_Parts_Qty"/>
+        <viewAttribute id="Spare_Parts_Cost"/>
+        <viewAttribute id="CALWEEK_1"/>
+        <viewAttribute id="DAY_OF_WEEK"/>
+        <viewAttribute id="DATE_SQL"/>
+        <viewAttribute id="Pro_Desc"/>
+        <viewAttribute id="Cust_Name"/>
+        <viewAttribute id="DATE_SQL_1"/>
+        <viewAttribute id="MONTH_LAST_DAY"/>
+        <viewAttribute id="DAY"/>
+        <viewAttribute id="CALMONTH"/>
+        <viewAttribute id="Pro_Desc_1"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Claim" source="Claim"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="QUARTER" source="QUARTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WEEK" source="WEEK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STATE" source="STATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Spare_Parts_Qty" source="Spare_Parts_Qty"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Spare_Parts_Cost" source="Spare_Parts_Cost"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE_SQL" source="DATE_SQL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="Pro_Desc"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Cust_Name" source="Cust_Name"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc_1" source="Pro_Desc_1"/>
+      </input>
+      <input node="#Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALWEEK_1" source="CALWEEK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DAY_OF_WEEK" source="DAY_OF_WEEK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE_SQL_1" source="DATE_SQL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH_LAST_DAY" source="MONTH_LAST_DAY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DAY" source="DAY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE_SQL" source="DATE_SQL"/>
+      </input>
+      <joinAttribute name="DATE_SQL"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="YEAR" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NotifYear"/>
+        <keyMapping columnObjectName="Join_1" columnName="YEAR"/>
+      </attribute>
+      <attribute id="QUARTER" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NotifQuarter"/>
+        <keyMapping columnObjectName="Join_1" columnName="QUARTER"/>
+      </attribute>
+      <attribute id="WEEK" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NotifWeek"/>
+        <keyMapping columnObjectName="Join_1" columnName="WEEK"/>
+      </attribute>
+      <attribute id="MONTH" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NotifMonth_Num"/>
+        <keyMapping columnObjectName="Join_1" columnName="MONTH"/>
+      </attribute>
+      <attribute id="REGION" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Region"/>
+        <keyMapping columnObjectName="Join_1" columnName="REGION"/>
+      </attribute>
+      <attribute id="STATE" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="State"/>
+        <keyMapping columnObjectName="Join_1" columnName="STATE"/>
+      </attribute>
+      <attribute id="COUNTRY" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Country"/>
+        <keyMapping columnObjectName="Join_1" columnName="COUNTRY"/>
+      </attribute>
+      <attribute id="CALWEEK_1" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CALWEEK"/>
+        <keyMapping columnObjectName="Join_1" columnName="CALWEEK_1"/>
+      </attribute>
+      <attribute id="DAY_OF_WEEK" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DAY_OF_WEEK"/>
+        <keyMapping columnObjectName="Join_1" columnName="DAY_OF_WEEK"/>
+      </attribute>
+      <attribute id="DATE_SQL" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NotifDate"/>
+        <keyMapping columnObjectName="Join_1" columnName="DATE_SQL"/>
+      </attribute>
+      <attribute id="Pro_Desc" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Service Type"/>
+        <keyMapping columnObjectName="Join_1" columnName="Pro_Desc"/>
+      </attribute>
+      <attribute id="Cust_Name" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Dealers"/>
+        <keyMapping columnObjectName="Join_1" columnName="Cust_Name"/>
+      </attribute>
+      <attribute id="DATE_SQL_1" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DATE_SQL"/>
+        <keyMapping columnObjectName="Join_1" columnName="DATE_SQL_1"/>
+      </attribute>
+      <attribute id="MONTH_LAST_DAY" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MONTH_LAST_DAY"/>
+        <keyMapping columnObjectName="Join_1" columnName="MONTH_LAST_DAY"/>
+      </attribute>
+      <attribute id="DAY" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DAY"/>
+        <keyMapping columnObjectName="Join_1" columnName="DAY"/>
+      </attribute>
+      <attribute id="CALMONTH" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CALMONTH"/>
+        <keyMapping columnObjectName="Join_1" columnName="CALMONTH"/>
+      </attribute>
+      <attribute id="Pro_Desc_1" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Spare Parts"/>
+        <keyMapping columnObjectName="Join_1" columnName="Pro_Desc_1"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="CC_Month_LastDate" hidden="false" order="19" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CC_MonthLastDate"/>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="10">
+          <formula>lastday(&quot;DATE_SQL&quot;)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="Claim" order="1" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="Join_1" columnName="Claim"/>
+      </measure>
+      <measure id="Spare_Parts_Qty" order="9" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Spare Qty"/>
+        <measureMapping columnObjectName="Join_1" columnName="Spare_Parts_Qty"/>
+      </measure>
+      <measure id="Spare_Parts_Cost" order="10" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Spare Cost "/>
+        <measureMapping columnObjectName="Join_1" columnName="Spare_Parts_Cost"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="CC_Claims" hidden="false" order="21" aggregationType="sum" engineAggregation="sum" measureType="simple" aggregatable="true" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="CC_Claims"/>
+        <formula>round(&quot;Claim&quot;,0)</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="140" y="100"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="220" y="320"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="50" y="320"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="140" y="190"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Cube:cube xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Cube="http://www.sap.com/ndb/BiModelCube.ecore" schemaVersion="1.5" id="AN_PS_OEM1_SALES_01" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled">
+  <origin/>
+  <descriptions defaultDescription="AN_OEM_SALES"/>
+  <metadata changedAt="2017-09-04 16:13:34.19"/>
+  <defaultSchema schemaName="PS_WARRANTY_ANALYTICS"/>
+  <localVariables/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <privateMeasureGroup id="MeasureGroup">
+    <attributes>
+      <attribute id="Company_Code" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Company Code"/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_SALES" columnName="Company_Code"/>
+      </attribute>
+      <attribute id="Billing_Odr_ID" key="true" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription=" Billing Order"/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_SALES" columnName="Billing_Odr_ID"/>
+      </attribute>
+      <attribute id="Currency" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_SALES" columnName="Currency"/>
+      </attribute>
+      <attribute id="Units" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_SALES" columnName="Units"/>
+      </attribute>
+      <attribute id="Prod_ID" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_SALES" columnName="Prod_ID"/>
+      </attribute>
+      <attribute id="Billing_Date" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_SALES" columnName="Billing_Date"/>
+      </attribute>
+      <attribute id="Sales_Org" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_SALES" columnName="Sales_Org"/>
+      </attribute>
+      <attribute id="Customer" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Dealer_ID "/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_SALES" columnName="Customer"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies>
+        <tableProxy centralTable="true">
+          <table schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_SALES"/>
+          <columnFilter columnName="Company_Code">
+            <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="PASO"/>
+          </columnFilter>
+        </tableProxy>
+      </tableProxies>
+      <joins/>
+      <layout>
+        <shapes>
+          <shape modelObjectName="PS_TBTX_SALES" modelObjectNameSpace="PS_WARRANTY_ANALYTICS" modelObjectType="catalog">
+            <upperLeftCorner x="70" y="30"/>
+          </shape>
+        </shapes>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="Sales_Qty" order="2" semanticType="quantity" aggregationType="sum" measureType="quantity">
+        <descriptions defaultDescription="Sales Qty"/>
+        <unitCurrencyAttribute attributeName="Units"/>
+        <measureMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_SALES" columnName="Order_Qty"/>
+      </measure>
+      <measure id="Sales_Value" order="3" semanticType="amount" aggregationType="sum" measureType="amount">
+        <descriptions defaultDescription="Sales Value"/>
+        <unitCurrencyAttribute attributeName="Currency"/>
+        <measureMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_SALES" columnName="Net_Value"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="Sales_Qty_test" hidden="false" order="7" semanticType="quantity" aggregationType="sum" engineAggregation="sum" measureType="quantity" calculateBeforeAggregation="true" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="Sales_Qty_test"/>
+        <fixedUnit>EA</fixedUnit>
+        <formula>&quot;Sales_Qty&quot;</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <sharedDimensions>
+      <logicalJoin associatedObjectUri="/PS-PKG-OEM1-01/attributeviews/AT_OEM_MODEL">
+        <attributes>
+          <attributeRef>#Prod_ID</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>ProID</attributeName>
+        </associatedAttributeNames>
+        <properties joinOperator="Equal" joinType="referential"/>
+        <associatedAttributeFeatures/>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="/PS-PKG-OEM1-01/attributeviews/AT_OEM_TIME">
+        <attributes>
+          <attributeRef>#Billing_Date</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>DATE_SQL</attributeName>
+        </associatedAttributeNames>
+        <properties joinOperator="Equal" joinType="referential"/>
+        <associatedAttributeFeatures/>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="/PS-PKG-OEM1-01/attributeviews/AT_OEM_ORGANIZATION">
+        <attributes>
+          <attributeRef>#Sales_Org</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>SORGID</attributeName>
+        </associatedAttributeNames>
+        <properties joinOperator="Equal" joinType="referential"/>
+        <associatedAttributeFeatures>
+          <attributeReference attributeName="SORGID" hidden="true"/>
+          <attributeReference attributeName="DCHANNEL" hidden="true"/>
+          <attributeReference attributeName="DIVISON" hidden="true"/>
+          <attributeReference attributeName="CMPID" hidden="true"/>
+          <attributeReference attributeName="CMPNAME" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="/PS-PKG-OEM1-01/attributeviews/AT_OEM_CUSTOMER">
+        <attributes>
+          <attributeRef>#Customer</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>Cust_ID</attributeName>
+        </associatedAttributeNames>
+        <properties joinOperator="Equal" joinType="referential"/>
+        <associatedAttributeFeatures>
+          <attributeReference attributeName="Add_ID" hidden="true"/>
+          <attributeReference attributeName="NAME1" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+    </sharedDimensions>
+    <layout>
+      <shapes>
+        <shape modelObjectName="MEASURE_GROUP" modelObjectType="repository">
+          <upperLeftCorner x="377" y="15"/>
+        </shape>
+        <shape modelObjectName="/PS-PKG-OEM1-01/attributeviews/AT_OEM_MODEL" modelObjectType="repository">
+          <upperLeftCorner x="30" y="31"/>
+        </shape>
+        <shape modelObjectName="/PS-PKG-OEM1-01/attributeviews/AT_OEM_TIME" modelObjectType="repository">
+          <upperLeftCorner x="16" y="254"/>
+        </shape>
+        <shape modelObjectName="/PS-PKG-OEM1-01/attributeviews/AT_OEM_ORGANIZATION" modelObjectType="repository">
+          <upperLeftCorner x="699" y="16"/>
+        </shape>
+        <shape modelObjectName="/PS-PKG-OEM1-01/attributeviews/AT_OEM_CUSTOMER" modelObjectType="repository">
+          <upperLeftCorner x="725" y="274"/>
+        </shape>
+        <shape modelObjectName="LogicalView" modelObjectNameSpace="MeasureGroup" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateMeasureGroup>
+</Cube:cube>

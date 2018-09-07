@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="CV_PS_PAL_ALIGNMENT_SPARE_COST" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
+<origin/>
+  <descriptions defaultDescription="CV_PS_PAL_ALIGNMENT_SPARE_COST"/>
+  <metadata changedAt="2018-07-18 13:00:19.297"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="VIEW_PROC_PAL_ALIGNMENT_SPARE_COST" type="DATA_BASE_VIEW">
+      <viewAttributes allViewAttributes="true"/>
+      <columnObject schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="VIEW_PROC_PAL_ALIGNMENT_SPARE_COST"/>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="VIEW_PROC_PAL_ALIGNMENT_SPARE_COST">
+    <descriptions/>
+    <attributes>
+      <attribute id="Year" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Year"/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="VIEW_PROC_PAL_ALIGNMENT_SPARE_COST" columnName="Year"/>
+      </attribute>
+      <attribute id="Month" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Month"/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="VIEW_PROC_PAL_ALIGNMENT_SPARE_COST" columnName="Month"/>
+      </attribute>
+      <attribute id="CALMONTH" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CALMONTH"/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="VIEW_PROC_PAL_ALIGNMENT_SPARE_COST" columnName="CALMONTH"/>
+      </attribute>
+      <attribute id="CC_Month_LastDate" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CC_Month_LastDate"/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="VIEW_PROC_PAL_ALIGNMENT_SPARE_COST" columnName="CC_Month_LastDate"/>
+      </attribute>
+      <attribute id="Pro_Desc" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Pro_Desc"/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="VIEW_PROC_PAL_ALIGNMENT_SPARE_COST" columnName="Pro_Desc"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="CC_Alignment_Service_Type" order="9" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="Alignment Service Type"/>
+        <keyCalculation datatype="VARCHAR" length="20" expressionLanguage="COLUMN_ENGINE">
+          <formula>'Alignment'</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="Spare_Parts_Cost" order="6" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Spare Parts Cost"/>
+        <measureMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="VIEW_PROC_PAL_ALIGNMENT_SPARE_COST" columnName="Spare_Parts_Cost"/>
+      </measure>
+      <measure id="PredictedValues" order="7" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Predicted Values"/>
+        <measureMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="VIEW_PROC_PAL_ALIGNMENT_SPARE_COST" columnName="PredictedValues"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="CC_Predicted_Values" hidden="false" order="8" aggregationType="sum" measureType="simple" aggregatable="true" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="13" scale="2">
+        <descriptions defaultDescription="Projected Values"/>
+        <formula>round(&quot;PredictedValues&quot;,0)</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

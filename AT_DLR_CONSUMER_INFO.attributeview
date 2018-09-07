@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dimension:dimension xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="AT_DLR_CONSUMER_INFO" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="internal" dimensionType="Standard">
+  <origin/>
+  <descriptions defaultDescription="AT_DLR_CONSUMER"/>
+  <metadata changedAt="2018-03-29 19:18:42.674" createdAt="2018-03-29 19:18:42.674"/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <attributes>
+    <attribute id="Consumer_ID" key="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_CONSUMER" columnName="Consumer_ID"/>
+    </attribute>
+    <attribute id="Consumer_Name" order="2" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription=" Consumer Name"/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_CONSUMER" columnName="Consumer_Name"/>
+    </attribute>
+    <attribute id="Address" order="3" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_CONSUMER" columnName="Address"/>
+    </attribute>
+    <attribute id="Age" order="4" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_CONSUMER" columnName="Age"/>
+    </attribute>
+    <attribute id="Sex" order="5" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_CONSUMER" columnName="Sex"/>
+    </attribute>
+    <attribute id="Email_ID" order="6" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_CONSUMER" columnName="Email ID"/>
+    </attribute>
+    <attribute id="Phone" order="7" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_CONSUMER" columnName="Phone"/>
+    </attribute>
+    <attribute id="Postal_Code" order="8" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_CONSUMER" columnName="Postal Code"/>
+    </attribute>
+    <attribute id="Profession" order="9" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_CONSUMER" columnName="Profession"/>
+    </attribute>
+    <attribute id="Education" order="10" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_CONSUMER" columnName="Education"/>
+    </attribute>
+    <attribute id="Marital_status" order="11" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_CONSUMER" columnName="Marital status"/>
+    </attribute>
+    <attribute id="Consumer_Post_Code" order="12" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Consumer Postal Code"/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_GEO_CONSUMER" columnName="Consumer_Post_Code"/>
+    </attribute>
+    <attribute id="Consumer_City" order="13" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Consumer City"/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_GEO_CONSUMER" columnName="Consumer_City"/>
+    </attribute>
+    <attribute id="Consumer_State" order="14" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Consumer State"/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_GEO_CONSUMER" columnName="Consumer_State"/>
+    </attribute>
+    <attribute id="Consumer_Country" order="15" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Consumer Country"/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_GEO_CONSUMER" columnName="Consumer_Country"/>
+    </attribute>
+    <attribute id="Consumer_Region" order="16" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Consumer Region"/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_GEO_CONSUMER" columnName="Consumer_Region"/>
+    </attribute>
+    <attribute id="Latitude" order="17" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_GEO_CITY" columnName="Latitude"/>
+    </attribute>
+    <attribute id="Longtitude" order="18" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_GEO_CITY" columnName="Longtitude"/>
+    </attribute>
+    <attribute id="Consumer_Geo_ID" order="19" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_GEO_CITY" columnName="Consumer_Geo_ID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <privateDataFoundation>
+    <tableProxies>
+      <tableProxy>
+        <table schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_CONSUMER"/>
+      </tableProxy>
+      <tableProxy>
+        <table schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_GEO_CONSUMER"/>
+      </tableProxy>
+      <tableProxy>
+        <table schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_GEO_CITY"/>
+      </tableProxy>
+    </tableProxies>
+    <joins>
+      <join>
+        <leftTable schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_CONSUMER"/>
+        <rightTable schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_GEO_CONSUMER"/>
+        <leftColumns>
+          <columnName>Postal Code</columnName>
+        </leftColumns>
+        <rightColumns>
+          <columnName>Consumer_Post_Code</columnName>
+        </rightColumns>
+        <properties joinOperator="Equal" joinType="referential"/>
+      </join>
+      <join>
+        <leftTable schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_GEO_CONSUMER"/>
+        <rightTable schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_GEO_CITY"/>
+        <leftColumns>
+          <columnName>Consumer_GeoID</columnName>
+        </leftColumns>
+        <rightColumns>
+          <columnName>Consumer_Geo_ID</columnName>
+        </rightColumns>
+        <properties joinOperator="Equal" joinType="referential"/>
+      </join>
+    </joins>
+    <layout>
+      <shapes>
+        <shape modelObjectName="PS_TB_CONSUMER" modelObjectNameSpace="PS_WARRANTY_ANALYTICS" modelObjectType="catalog">
+          <upperLeftCorner x="872" y="30"/>
+        </shape>
+        <shape modelObjectName="PS_TB_GEO_CONSUMER" modelObjectNameSpace="PS_WARRANTY_ANALYTICS" modelObjectType="catalog">
+          <upperLeftCorner x="1240" y="30"/>
+        </shape>
+        <shape modelObjectName="PS_TB_GEO_CITY" modelObjectNameSpace="PS_WARRANTY_ANALYTICS" modelObjectType="catalog">
+          <upperLeftCorner x="1637" y="30"/>
+        </shape>
+        <shape modelObjectName="DataFoundation" modelObjectNameSpace="DataFoundation" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateDataFoundation>
+  <hierarchies/>
+</Dimension:dimension>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dimension:dimension xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="AT_OEM_EQUIPMENT" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="internal" dimensionType="Standard">
+  <origin/>
+  <descriptions defaultDescription="AT_OEM_EQUIPMENT"/>
+  <metadata changedAt="2017-07-25 15:20:54.158" createdAt="2017-07-25 15:20:54.158"/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <attributes>
+    <attribute id="Equipment_ID" key="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_EQUIPMENT" columnName="Equipment_ID"/>
+    </attribute>
+    <attribute id="Year_Of_Construction" order="2" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_EQUIPMENT" columnName="Year_Of_Construction"/>
+    </attribute>
+    <attribute id="Description" order="3" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Model "/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_EQUIPMENT" columnName="Description"/>
+    </attribute>
+    <attribute id="Object_Number" order="4" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_EQUIPMENT" columnName="Object_Number"/>
+    </attribute>
+    <attribute id="Model_Number" order="5" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription=" Model_ID"/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_EQUIPMENT" columnName="Model_Number"/>
+    </attribute>
+    <attribute id="Manuf_SerialNo" order="6" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Manuf_SerialNo"/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_EQUIPMENT" columnName="Manuf_SerialNo"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <privateDataFoundation>
+    <tableProxies>
+      <tableProxy>
+        <table schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_EQUIPMENT"/>
+        <columnFilter columnName="Model_Number">
+          <valueFilter xsi:type="AccessControl:ListValueFilter" operator="IN" including="true">
+            <operands value="3000000037"/>
+            <operands value="3000000038"/>
+            <operands value="3000000039"/>
+            <operands value="000000003000000037"/>
+            <operands value="000000003000000038"/>
+            <operands value="000000003000000039"/>
+            <operands value="000000003000000040"/>
+            <operands value="3000000037"/>
+            <operands value="3000000038"/>
+            <operands value="3000000039"/>
+          </valueFilter>
+        </columnFilter>
+      </tableProxy>
+    </tableProxies>
+    <joins/>
+    <layout>
+      <shapes>
+        <shape modelObjectName="PS_TB_EQUIPMENT" modelObjectNameSpace="PS_WARRANTY_ANALYTICS" modelObjectType="catalog">
+          <upperLeftCorner x="70" y="30"/>
+        </shape>
+        <shape modelObjectName="DataFoundation" modelObjectNameSpace="DataFoundation" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateDataFoundation>
+  <hierarchies/>
+</Dimension:dimension>

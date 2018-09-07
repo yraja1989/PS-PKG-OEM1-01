@@ -1,0 +1,75 @@
+service
+{
+
+    "PS-PKG-OEM1-01::CV_PS_PAL_OVERALL_SPARE_COST" as "OVERALL SPARE COST"
+	with ( 
+             "Year","Month","CALMONTH","CC_Month_LastDate","Spare_Parts_Cost","PredictedValues","CC_Predicted_Values")
+             
+	//key("NOTIF_ID","CustomerID","Year") 
+	keys generate local "GenID"  
+	//navigates ( "PS_OEM_CLAIMS" as "CURRENT_EVAL" ) 
+	aggregates always (SUM of "Spare_Parts_Cost",SUM of "PredictedValues",SUM of "CC_Predicted_Values");
+    
+	
+	
+	
+	"PS-PKG-OEM1-01::CV_PS_PAL_AC_SPARE_COST" as "AC SPARE COST"
+	with ( 
+             "Year","Month","CALMONTH","CC_Month_LastDate","Pro_Desc","Spare_Parts_Cost","PredictedValues","CC_Predicted_Values")
+             
+	//key("NOTIF_ID","CustomerID","Year") 
+	keys generate local "GenID"  
+	//navigates ( "PS_OEM_CLAIMS" as "CURRENT_EVAL" ) 
+	aggregates always (SUM of "Spare_Parts_Cost",SUM of "PredictedValues",SUM of "CC_Predicted_Values");
+	
+	
+	"PS-PKG-OEM1-01::CV_PS_PAL_AIRBAG_SPARE_COST" as "AIRBAG SPARE COST"
+	with ( 
+             "Year","Month","CALMONTH","CC_Month_LastDate","Pro_Desc","Spare_Parts_Cost","PredictedValues","CC_Predicted_Values")
+             
+	//key("NOTIF_ID","CustomerID","Year") 
+	keys generate local "GenID"  
+	//navigates ( "PS_OEM_CLAIMS" as "CURRENT_EVAL" ) 
+	aggregates always (SUM of "Spare_Parts_Cost",SUM of "PredictedValues",SUM of "CC_Predicted_Values");
+	
+	
+	"PS-PKG-OEM1-01::CV_PS_PAL_ALIGNMENT_SPARE_COST" as "ALIGNMENT SPARE COST"
+	with ( 
+             "Year","Month","CALMONTH","CC_Month_LastDate","Pro_Desc","Spare_Parts_Cost","PredictedValues","CC_Predicted_Values")
+             
+	//key("NOTIF_ID","CustomerID","Year") 
+	keys generate local "GenID"  
+	//navigates ( "PS_OEM_CLAIMS" as "CURRENT_EVAL" ) 
+	aggregates always (SUM of "Spare_Parts_Cost",SUM of "PredictedValues",SUM of "CC_Predicted_Values");
+	
+	"PS-PKG-OEM1-01::CV_PS_PAL_BRAKE_SPARE_COST" as "BRAKE SPARE COST"
+	with ( 
+             "Year","Month","CALMONTH","CC_Month_LastDate","Pro_Desc","Spare_Parts_Cost","PredictedValues","CC_Predicted_Values")
+             
+	//key("NOTIF_ID","CustomerID","Year") 
+	keys generate local "GenID"  
+	//navigates ( "PS_OEM_CLAIMS" as "CURRENT_EVAL" ) 
+	aggregates always (SUM of "Spare_Parts_Cost",SUM of "PredictedValues",SUM of "CC_Predicted_Values");
+	
+	
+	"PS-PKG-OEM1-01::CV_PS_PAL_DRIVETRAIN_SPARE_COST" as "DRIVETRAIN SPARE COST"
+	with ( 
+             "Year","Month","CALMONTH","CC_Month_LastDate","Pro_Desc","Spare_Parts_Cost","PredictedValues","CC_Predicted_Values")
+             
+	//key("NOTIF_ID","CustomerID","Year") 
+	keys generate local "GenID"  
+	//navigates ( "PS_OEM_CLAIMS" as "CURRENT_EVAL" ) 
+	aggregates always (SUM of "Spare_Parts_Cost",SUM of "PredictedValues",SUM of "CC_Predicted_Values");
+	
+	
+	"PS-PKG-OEM1-01::CV_PS_PAL_ENGINE_SPARE_COST" as "ENGINE SPARE COST"
+	with ( 
+             "Year","Month","CALMONTH","CC_Month_LastDate","Pro_Desc","Spare_Parts_Cost","PredictedValues","CC_Predicted_Values")
+             
+	//key("NOTIF_ID","CustomerID","Year") 
+	keys generate local "GenID"  
+	//navigates ( "PS_OEM_CLAIMS" as "CURRENT_EVAL" ) 
+	aggregates always (SUM of "Spare_Parts_Cost",SUM of "PredictedValues",SUM of "CC_Predicted_Values");
+	
+	
+} annotations {   enable OData4SAP;}

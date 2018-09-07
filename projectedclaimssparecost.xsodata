@@ -1,0 +1,77 @@
+service
+{
+
+    "PS-PKG-OEM1-01::CV_PROJECTED_CLAIMS_SERVICE_TYPE" as "Service Type Claims"
+	with ( 
+             "Year",
+             "Month",
+             "Pro_Desc",
+             "AC_Actual_Claims",
+             "Airbag_Actual_Claims",
+             "Alignment_Actual_Claims",
+             "Brake_Actual_Claims",
+             "Drivetrain_Actual_Claims",
+             "Engine_Actual_Claims",
+             "AC_Projected_Claims",
+             "Airbag_Projected_Claims",
+             "Alignment_Projected_Claims",
+             "Brake_Projected_Claims",
+             "Drivetrain_Projected_Claims",
+             "Engine_Projected_Claims",
+             "All_Actual_Claims",
+             "All_Projected_Claims")
+             
+	//key("NOTIF_ID","CustomerID","Year") 
+	keys generate local "GenID"  
+	//navigates ( "PS_OEM_CLAIMS" as "CURRENT_EVAL" ) 
+	aggregates always (
+	         SUM of "AC_Actual_Claims",
+             SUM of "Airbag_Actual_Claims",
+             SUM of "Alignment_Actual_Claims",
+             SUM of "Brake_Actual_Claims",
+             SUM of "Drivetrain_Actual_Claims",
+             SUM of "Engine_Actual_Claims",
+             SUM of "AC_Projected_Claims",
+             SUM of "Airbag_Projected_Claims",
+             SUM of "Alignment_Projected_Claims",
+             SUM of "Brake_Projected_Claims",
+             SUM of "Drivetrain_Projected_Claims",
+             SUM of "Engine_Projected_Claims",
+             SUM of "All_Actual_Claims",
+             SUM of "All_Projected_Claims");
+	
+	
+	"PS-PKG-OEM1-01::CV_PROJECTED_SPARECOST_SERVICE_TYPE" as "Spare Cost By Service Type"
+	with ( 
+             "Year",
+             "Month",
+             "AC_Actual_Spare_Cost",
+             "Airbag_Actual_Spare_Cost",
+             "Alignment_Actual_Spare_Cost",
+             "Brake_Actual_Spare_Cost",
+             "Drivetrain_Actual_Spare_Cost",
+             "Engine_Actual_Spare_Cost",
+             "AC_Projected_Spare_Cost",
+             "Airbag_Projected_Spare_Cost",
+             "Alignment_Projected_Spare_Cost",
+             "Brake_Projected_Spare_Cost",
+             "Drivetrain_Projected_Spare_Cost",
+             "Engine_Projected_Spare_Cost")
+             
+	//key("NOTIF_ID","CustomerID","Year") 
+	keys generate local "GenID"  
+	//navigates ( "PS_OEM_CLAIMS" as "CURRENT_EVAL" ) 
+	aggregates always (
+	        SUM of  "AC_Actual_Spare_Cost",
+            SUM of   "Airbag_Actual_Spare_Cost",
+            SUM of  "Alignment_Actual_Spare_Cost",
+            SUM of   "Brake_Actual_Spare_Cost",
+            SUM of   "Drivetrain_Actual_Spare_Cost",
+            SUM of   "Engine_Actual_Spare_Cost",
+            SUM of   "AC_Projected_Spare_Cost",
+            SUM of   "Airbag_Projected_Spare_Cost",
+            SUM of   "Alignment_Projected_Spare_Cost",
+            SUM of   "Brake_Projected_Spare_Cost",
+            SUM of   "Drivetrain_Projected_Spare_Cost",
+            SUM of   "Engine_Projected_Spare_Cost");
+	} annotations {   enable OData4SAP;}

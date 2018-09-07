@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="CV_SCRIPT_CART_DT" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="SCRIPT_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" runWithInvokerPrivileges="true" scriptParametersCaseSensitive="true">
+  <origin/>
+  <descriptions defaultDescription="CV_SCRIPT_CART_DT"/>
+  <metadata changedAt="2018-03-26 21:31:48.253"/>
+  <defaultSchema schemaName="PAL_RY"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources/>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:SqlScriptView" id="Script_View">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute datatype="NVARCHAR" id="ID" length="15"/>
+        <viewAttribute datatype="VARCHAR" id="SCORING" length="2"/>
+        <viewAttribute datatype="INTEGER" id="PROB"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <definition> 
+ 
+ BEGIN 
+ 	 /********* Begin Procedure Script ************/ 
+ 
+ --SET SCHEMA &quot;PAL_RY&quot;;
+ DECLARE vc &quot;PAL_RY&quot;.&quot;PAL_CONTROL_TBL&quot;;
+ DECLARE vs &quot;PAL_RY&quot;.&quot;PAL_DT_SCORING_DATA_TBL&quot;;
+ DECLARE vm &quot;PAL_RY&quot;.&quot;PAL_CART_TREEMODEL_TBL&quot;;
+ DECLARE vr &quot;PAL_RY&quot;.&quot;PAL_DT_SCORING_RESULT_TBL&quot;;
+ 
+ vc =  SELECT 'THREAD_NUMBER' AS NAME,
+                           2 AS INTARGS ,
+                           null AS DOUBLEARGS ,
+                           null AS STRINGARGS
+                           FROM DUMMY
+                           UNION ALL
+       SELECT 'IS_OUPUT_PROBABILITY' AS NAME,
+                           1 AS INTARGS ,
+                           null AS DOUBLEARGS ,
+                           null AS STRINGARGS
+                           FROM DUMMY
+                           UNION ALL
+       SELECT 'MODEL_FORMAT' AS NAME,
+                           1 AS INTARGS ,
+                           null AS DOUBLEARGS ,
+                           null AS STRINGARGS
+                           FROM DUMMY; 
+ 
+ vs = SELECT &quot;NOTIF_ID&quot; AS &quot;ID&quot;, &quot;CURRENT_EVAL&quot;, &quot;LAST_EVALVATION&quot;, &quot;SERVICE_TYPE&quot;, &quot;MILES_COVERED&quot;, &quot;DAYS_BETWEEN&quot;, &quot;CUSTOMER/SATISFIED&quot;, &quot;DEALER&quot;, &quot;REGION&quot;
+       FROM &quot;PAL_RY&quot;.&quot;Cus_Satisfaction&quot;
+       WHERE &quot;LAST_EVALVATION&quot; >= 0.95 AND
+             &quot;CUSTOMER/NOT_SATISFIED&quot; = 0;
+             
+vm = SELECT * FROM  &quot;PAL_RY&quot;.&quot;PAL_CART_TREEMODEL_TBL&quot;;            
+  
+ --DROP TABLE :VR;
+  CALL &quot;PAL_RY&quot;.&quot;PAL_DT_SCORING_PROC&quot;(:vs,:vc,:vm,:vr) ;    
+ --CALL &quot;PAL_RY&quot;.PAL_DT_SCORING_PROC(PAL_DT_SCORING_DATA_TBL, PAL_CONTROL_TBL, PAL_CART_TREEMODEL_TBL, PAL_DT_SCORING_RESULT_TBL) ;            
+ --CALL &quot;PAL_RY&quot;.PAL_DT_SCORING_PROC(PAL_DT_SCORING_DATA_TBL, PAL_CONTROL_TBL, PAL_CART_TREEMODEL_TBL, PAL_DT_SCORING_RESULT_TBL) ;            
+ 
+ 	 var_out = SELECT * FROM :vr
+       WHERE SCORING = 1;
+
+END /********* End Procedure Script ************/
+
+ </definition>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Script_View">
+    <descriptions/>
+    <attributes>
+      <attribute id="ID" order="1">
+        <descriptions defaultDescription="ID"/>
+        <keyMapping columnObjectName="Script_View" columnName="ID"/>
+      </attribute>
+      <attribute id="SCORING" order="2">
+        <descriptions defaultDescription="SCORING"/>
+        <keyMapping columnObjectName="Script_View" columnName="SCORING"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="PROB" order="3" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="PROB"/>
+        <measureMapping columnObjectName="Script_View" columnName="PROB"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

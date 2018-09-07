@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="CV_PAL_OVERALL_CUST_SATISFACTION" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
+  <origin/>
+  <descriptions defaultDescription="CV_PAL_OVERALL_CUST_SATISFACTION"/>
+  <metadata changedAt="2018-04-06 16:20:34.322"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="47"/>
+  <dataSources>
+    <DataSource id="AN_PAL_CUSTOMERS_NOT_SATISFIED" type="ANALYTIC_VIEW">
+      <viewAttributes allViewAttributes="true"/>
+      <resourceUri>/PS-PKG-OEM1-01/analyticviews/AN_PAL_CUSTOMERS_NOT_SATISFIED</resourceUri>
+    </DataSource>
+    <DataSource id="AN_PAL_CUSTOMERS_SATISFIED" type="ANALYTIC_VIEW">
+      <viewAttributes allViewAttributes="true"/>
+      <resourceUri>/PS-PKG-OEM1-01/analyticviews/AN_PAL_CUSTOMERS_SATISFIED</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="NOTIF_ID"/>
+        <viewAttribute id="SERVICE_TYPE"/>
+        <viewAttribute id="CUSTOMER_NOT_SATISFIED"/>
+        <viewAttribute id="DEALER"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="CONSUMER_ID"/>
+        <viewAttribute id="CC_Cust_Not_Satisfied"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#AN_PAL_CUSTOMERS_NOT_SATISFIED">
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOTIF_ID" source="NOTIF_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SERVICE_TYPE" source="SERVICE_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_NOT_SATISFIED" source="CUSTOMER_NOT_SATISFIED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEALER" source="DEALER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSUMER_ID" source="CONSUMER_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Cust_Not_Satisfied" source="CC_Cust_Not_Satisfied"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="NOTIF_ID"/>
+        <viewAttribute id="CUSTOMER_NOT_SATISFIED"/>
+        <viewAttribute id="DEALER"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="SERVICE_TYPE"/>
+        <viewAttribute id="CONSUMER_ID"/>
+        <viewAttribute id="CC_Cust_Satisfied"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#AN_PAL_CUSTOMERS_SATISFIED">
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOTIF_ID" source="NOTIF_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_NOT_SATISFIED" source="CUSTOMER_NOT_SATISFIED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEALER" source="DEALER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SERVICE_TYPE" source="SERVICE_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSUMER_ID" source="CONSUMER_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Cust_Satisfied" source="CC_Cust_Satisfied"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="SERVICE_TYPE"/>
+        <viewAttribute id="CUSTOMER_NOT_SATISFIED"/>
+        <viewAttribute id="DEALER"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="CONSUMER_ID"/>
+        <viewAttribute id="CC_Cust_Not_Satisfied"/>
+        <viewAttribute id="NOTIF_ID"/>
+        <viewAttribute id="CC_Cust_Satisfied"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SERVICE_TYPE" source="SERVICE_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_NOT_SATISFIED" source="CUSTOMER_NOT_SATISFIED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEALER" source="DEALER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSUMER_ID" source="CONSUMER_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Cust_Not_Satisfied" source="CC_Cust_Not_Satisfied"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOTIF_ID" source="NOTIF_ID"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Cust_Satisfied" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SERVICE_TYPE" source="SERVICE_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_NOT_SATISFIED" source="CUSTOMER_NOT_SATISFIED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEALER" source="DEALER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSUMER_ID" source="CONSUMER_ID"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Cust_Not_Satisfied" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOTIF_ID" source="NOTIF_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Cust_Satisfied" source="CC_Cust_Satisfied"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Union_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="SERVICE_TYPE" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Service Type"/>
+        <keyMapping columnObjectName="Union_1" columnName="SERVICE_TYPE"/>
+      </attribute>
+      <attribute id="CUSTOMER_NOT_SATISFIED" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Customer Not Satisfied"/>
+        <keyMapping columnObjectName="Union_1" columnName="CUSTOMER_NOT_SATISFIED"/>
+      </attribute>
+      <attribute id="DEALER" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Dealer"/>
+        <keyMapping columnObjectName="Union_1" columnName="DEALER"/>
+      </attribute>
+      <attribute id="REGION" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Region"/>
+        <keyMapping columnObjectName="Union_1" columnName="REGION"/>
+      </attribute>
+      <attribute id="CONSUMER_ID" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Consumer ID"/>
+        <keyMapping columnObjectName="Union_1" columnName="CONSUMER_ID"/>
+      </attribute>
+      <attribute id="NOTIF_ID" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Notification ID"/>
+        <keyMapping columnObjectName="Union_1" columnName="NOTIF_ID"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="Not_Satisfied" order="6" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Not Satisfied"/>
+        <measureMapping columnObjectName="Union_1" columnName="CC_Cust_Not_Satisfied"/>
+      </measure>
+      <measure id="Satisfied" order="8" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Satisfied"/>
+        <measureMapping columnObjectName="Union_1" columnName="CC_Cust_Satisfied"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="80" y="90"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="10" y="350"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="200" y="350"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="90" y="210"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

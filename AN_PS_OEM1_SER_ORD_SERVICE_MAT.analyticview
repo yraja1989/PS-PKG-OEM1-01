@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Cube:cube xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Cube="http://www.sap.com/ndb/BiModelCube.ecore" schemaVersion="1.5" id="AN_PS_OEM1_SER_ORD_SERVICE_MAT" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled">
+  <origin/>
+  <descriptions defaultDescription="AN_SERVICE_ORDER"/>
+  <metadata changedAt="2018-04-06 15:24:23.809"/>
+  <defaultSchema schemaName="PS_WARRANTY_ANALYTICS"/>
+  <localVariables/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <privateMeasureGroup id="MeasureGroup">
+    <attributes>
+      <attribute id="Notification" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_CLAIMS" columnName="Notification"/>
+      </attribute>
+      <attribute id="Currency" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_CLAIMS" columnName="Currency"/>
+      </attribute>
+      <attribute id="Units" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_CLAIMS" columnName="Units"/>
+      </attribute>
+      <attribute id="Item_type" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_CLAIMS" columnName="Item type"/>
+      </attribute>
+      <attribute id="Item" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_CLAIMS" columnName="Item"/>
+      </attribute>
+      <attribute id="Notification_ID" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_NOTIFICATION" columnName="Notification_ID"/>
+      </attribute>
+      <attribute id="Assembly" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Model_ID"/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_NOTIFICATION" columnName="Assembly"/>
+      </attribute>
+      <attribute id="Cause_Text" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Root Cause"/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_NOTIFICATION" columnName="Cause_Text"/>
+      </attribute>
+      <attribute id="Company_Code" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Company Code"/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_NOTIFICATION" columnName="Company_Code"/>
+      </attribute>
+      <attribute id="Material" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_CLAIMS" columnName="Material"/>
+      </attribute>
+      <attribute id="Customer" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Customer"/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_NOTIFICATION" columnName="Customer"/>
+      </attribute>
+      <attribute id="Equipment" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Equipment"/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_NOTIFICATION" columnName="Equipment"/>
+      </attribute>
+      <attribute id="Notification_Date" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_NOTIFICATION" columnName="Notification_Date"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies>
+        <tableProxy centralTable="true">
+          <table schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_CLAIMS"/>
+          <columnFilter columnName="Item type">
+            <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="FR"/>
+          </columnFilter>
+        </tableProxy>
+        <tableProxy>
+          <table schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_NOTIFICATION"/>
+        </tableProxy>
+      </tableProxies>
+      <joins>
+        <join>
+          <leftTable schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_CLAIMS"/>
+          <rightTable schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_NOTIFICATION"/>
+          <leftColumns>
+            <columnName>Notification</columnName>
+          </leftColumns>
+          <rightColumns>
+            <columnName>Notification_ID</columnName>
+          </rightColumns>
+          <properties joinOperator="Equal" joinType="referential"/>
+        </join>
+      </joins>
+      <layout>
+        <shapes>
+          <shape modelObjectName="PS_TBTX_CLAIMS" modelObjectNameSpace="PS_WARRANTY_ANALYTICS" modelObjectType="catalog">
+            <upperLeftCorner x="58" y="41"/>
+          </shape>
+          <shape modelObjectName="PS_TBTX_NOTIFICATION" modelObjectNameSpace="PS_WARRANTY_ANALYTICS" modelObjectType="catalog">
+            <upperLeftCorner x="418" y="30"/>
+          </shape>
+        </shapes>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="Labor_Cost" order="3" semanticType="amount" aggregationType="sum" measureType="amount">
+        <descriptions defaultDescription="Labor Cost"/>
+        <unitCurrencyAttribute attributeName="Currency"/>
+        <measureMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_CLAIMS" columnName="Labor_Cost"/>
+      </measure>
+      <measure id="Labor_Hours" order="5" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Labor Hours"/>
+        <measureMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_CLAIMS" columnName="Labor_Qty"/>
+      </measure>
+      <measure id="Claim" order="7" aggregationType="count" measureType="simple">
+        <descriptions/>
+        <measureMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_CLAIMS" columnName="Claim"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="Total_Claims" hidden="false" order="9" aggregationType="sum" measureType="simple" calculateBeforeAggregation="true" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="Total Claims"/>
+        <formula>1</formula>
+      </measure>
+      <measure id="Avg_Labor_Cost_Per_Claims" hidden="false" order="10" semanticType="amount" aggregationType="sum" measureType="amount" calculateBeforeAggregation="false" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="10" scale="2">
+        <descriptions defaultDescription="Avg. Labor Cost Per Claims "/>
+        <unitCurrencyAttribute attributeName="Currency"/>
+        <formula>&quot;Labor_Cost&quot;/&quot;Total_Claims&quot; </formula>
+      </measure>
+      <measure id="Avg_Labor_Hour_Per_Claims" hidden="false" order="11" aggregationType="sum" measureType="simple" calculateBeforeAggregation="false" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="Avg. Labor Hour Per Claims"/>
+        <formula>&quot;Labor_Hours&quot;/&quot;Total_Claims&quot;</formula>
+      </measure>
+      <measure id="Avg_Labor_Cost_Per_Hour" hidden="false" order="12" semanticType="amount" aggregationType="sum" measureType="amount" calculateBeforeAggregation="false" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="10" scale="2">
+        <descriptions defaultDescription="Avg. Labor Cost Per Hour "/>
+        <unitCurrencyAttribute attributeName="Currency"/>
+        <formula>&quot;Labor_Cost&quot;/&quot;Labor_Hours&quot;</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <sharedDimensions>
+      <logicalJoin associatedObjectUri="/PS-PKG-OEM1-01/attributeviews/AT_OEM_SERVICE_TYPE">
+        <attributes>
+          <attributeRef>#Material</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>ProID</attributeName>
+        </associatedAttributeNames>
+        <properties joinOperator="Equal" joinType="referential"/>
+        <associatedAttributeFeatures/>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="/PS-PKG-OEM1-01/attributeviews/AT_OEM_CUSTOMER">
+        <attributes>
+          <attributeRef>#Customer</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>Cust_ID</attributeName>
+        </associatedAttributeNames>
+        <properties joinOperator="Equal" joinType="referential"/>
+        <associatedAttributeFeatures>
+          <attributeReference attributeName="Add_ID" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="/PS-PKG-OEM1-01/attributeviews/AT_OEM_EQUIPMENT">
+        <attributes>
+          <attributeRef>#Equipment</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>Equipment_ID</attributeName>
+        </associatedAttributeNames>
+        <properties joinOperator="Equal" joinType="referential"/>
+        <associatedAttributeFeatures>
+          <attributeReference attributeName="Year_Of_Construction" hidden="true"/>
+          <attributeReference attributeName="Object_Number" hidden="true"/>
+          <attributeReference attributeName="Model_Number" hidden="true"/>
+        </associatedAttributeFeatures>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="/PS-PKG-OEM1-01/attributeviews/AT_OEM_CLAIM_TIME">
+        <attributes>
+          <attributeRef>#Notification_Date</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>DATE_SQL</attributeName>
+        </associatedAttributeNames>
+        <properties joinOperator="Equal" joinType="referential"/>
+        <associatedAttributeFeatures/>
+      </logicalJoin>
+    </sharedDimensions>
+    <layout>
+      <shapes>
+        <shape modelObjectName="MEASURE_GROUP" modelObjectType="repository">
+          <upperLeftCorner x="310" y="-7"/>
+        </shape>
+        <shape modelObjectName="/PS-PKG-OEM1-01/attributeviews/AT_OEM_SERVICE_TYPE" modelObjectType="repository">
+          <upperLeftCorner x="-32" y="295"/>
+        </shape>
+        <shape modelObjectName="/PS-PKG-OEM1-01/attributeviews/AT_OEM_CUSTOMER" modelObjectType="repository">
+          <upperLeftCorner x="4" y="17"/>
+        </shape>
+        <shape modelObjectName="/PS-PKG-OEM1-01/attributeviews/AT_OEM_EQUIPMENT" modelObjectType="repository">
+          <upperLeftCorner x="717" y="236"/>
+        </shape>
+        <shape modelObjectName="/PS-PKG-OEM1-01/attributeviews/AT_OEM_CLAIM_TIME" modelObjectType="repository">
+          <upperLeftCorner x="679" y="15"/>
+        </shape>
+        <shape modelObjectName="LogicalView" modelObjectNameSpace="MeasureGroup" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateMeasureGroup>
+</Cube:cube>

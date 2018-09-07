@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dimension:dimension xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="AT_OEM_CUSTOMER" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="internal" dimensionType="Standard">
+  <origin/>
+  <descriptions defaultDescription="AT_OEM_CUSTOMER"/>
+  <metadata changedAt="2017-09-14 14:46:21.804"/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <attributes>
+    <attribute id="Cust_ID" key="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Dealer ID"/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_CUSTOMER" columnName="CUSTID"/>
+    </attribute>
+    <attribute id="Cust_Name" order="2" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Dealers"/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_CUSTOMER" columnName="CUSTNAME"/>
+    </attribute>
+    <attribute id="Add_ID" order="3" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Dealer Add ID"/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_CUSTOMER" columnName="ADDRID"/>
+    </attribute>
+    <attribute id="STATE" order="4" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="State"/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_GEO" columnName="STATE"/>
+    </attribute>
+    <attribute id="COUNTRY" order="5" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Country"/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_GEO" columnName="COUNTRY"/>
+    </attribute>
+    <attribute id="REGION" order="6" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Region"/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_GEO" columnName="REGION"/>
+    </attribute>
+    <attribute id="POSTCODE_ID" order="7" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Postal Code"/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_GEO" columnName="POSTCODE_ID"/>
+    </attribute>
+    <attribute id="CITY" order="8" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="City"/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_GEO" columnName="CITY"/>
+    </attribute>
+    <attribute id="NAME1" hidden="true" order="9" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="NAME1"/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_CUST_ADDRESS" columnName="NAME1"/>
+    </attribute>
+    <attribute id="Latitude" order="10" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Latitude"/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="Dealers_Geo_City" columnName="Latitude"/>
+    </attribute>
+    <attribute id="Longitude" order="11" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="Longitude"/>
+      <keyMapping schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="Dealers_Geo_City" columnName="Longitude"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <privateDataFoundation>
+    <tableProxies>
+      <tableProxy>
+        <table schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_CUSTOMER"/>
+      </tableProxy>
+      <tableProxy>
+        <table schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_CUST_ADDRESS"/>
+      </tableProxy>
+      <tableProxy>
+        <table schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_GEO"/>
+      </tableProxy>
+      <tableProxy>
+        <table schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="Dealers_Geo_City"/>
+      </tableProxy>
+    </tableProxies>
+    <joins>
+      <join>
+        <leftTable schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_CUSTOMER"/>
+        <rightTable schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_CUST_ADDRESS"/>
+        <leftColumns>
+          <columnName>ADDRID</columnName>
+        </leftColumns>
+        <rightColumns>
+          <columnName>ADRSID</columnName>
+        </rightColumns>
+        <properties joinOperator="Equal" joinType="referential"/>
+      </join>
+      <join>
+        <leftTable schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_CUST_ADDRESS"/>
+        <rightTable schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_GEO"/>
+        <leftColumns>
+          <columnName>POSTAL_CODE</columnName>
+        </leftColumns>
+        <rightColumns>
+          <columnName>POSTCODE_ID</columnName>
+        </rightColumns>
+        <properties joinOperator="Equal" joinType="referential"/>
+      </join>
+      <join>
+        <leftTable schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TB_GEO"/>
+        <rightTable schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="Dealers_Geo_City"/>
+        <leftColumns>
+          <columnName>CITY</columnName>
+        </leftColumns>
+        <rightColumns>
+          <columnName>Dealer_City</columnName>
+        </rightColumns>
+        <properties joinOperator="Equal" joinType="referential"/>
+      </join>
+    </joins>
+    <layout>
+      <shapes>
+        <shape modelObjectName="PS_TB_CUSTOMER" modelObjectNameSpace="PS_WARRANTY_ANALYTICS" modelObjectType="catalog">
+          <upperLeftCorner x="32" y="30"/>
+        </shape>
+        <shape modelObjectName="PS_TB_CUST_ADDRESS" modelObjectNameSpace="PS_WARRANTY_ANALYTICS" modelObjectType="catalog">
+          <upperLeftCorner x="398" y="30"/>
+        </shape>
+        <shape modelObjectName="PS_TB_GEO" modelObjectNameSpace="PS_WARRANTY_ANALYTICS" modelObjectType="catalog">
+          <upperLeftCorner x="789" y="30"/>
+        </shape>
+        <shape modelObjectName="Dealers_Geo_City" modelObjectNameSpace="PS_WARRANTY_ANALYTICS" modelObjectType="catalog">
+          <upperLeftCorner x="1115" y="30"/>
+        </shape>
+        <shape modelObjectName="DataFoundation" modelObjectNameSpace="DataFoundation" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateDataFoundation>
+  <hierarchies/>
+</Dimension:dimension>

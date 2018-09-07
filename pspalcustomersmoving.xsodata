@@ -1,0 +1,15 @@
+service
+{
+	"PS-PKG-OEM1-01::CV_PAL_CUST_SATISFACTION" as "MOVING_CUSTOMERS"
+	with ( 
+           "REGION","DEALER","CUSTOMER_NOT_SATISFIED","SERVICE_TYPE","Consumer_Name",
+       "Phone","Consumer_State","Consumer_City","Consumer_Post_Code","Customers_Expected_To_Move","LAST_EVALVATION","CURRENT_EVAL")
+
+	//key("NOTIF_ID","CustomerID","Year") 
+	keys generate local "GenID"  
+	//navigates ( "PS_OEM_CLAIMS" as "CURRENT_EVAL" ) 
+	aggregates always (SUM of "Customers_Expected_To_Move",SUM of "LAST_EVALVATION",SUM of "CURRENT_EVAL");
+	
+	
+	
+} annotations {   enable OData4SAP;}

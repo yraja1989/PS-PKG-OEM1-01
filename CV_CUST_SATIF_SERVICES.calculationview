@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="CV_CUST_SATIF_SERVICES" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
+  <origin/>
+  <descriptions defaultDescription="CV_CUST_SATIF_SERVICES"/>
+  <metadata changedAt="2018-04-02 17:55:27.418"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="50"/>
+  <dataSources>
+    <DataSource id="CV_PAL_CUST_SATISFACTION" type="CALCULATION_VIEW">
+      <viewAttributes allViewAttributes="true"/>
+      <resourceUri>/PS-PKG-OEM1-01/calculationviews/CV_PAL_CUST_SATISFACTION</resourceUri>
+    </DataSource>
+    <DataSource id="CV_WARR_SERVICE_SPARE_PARTS" type="CALCULATION_VIEW">
+      <viewAttributes allViewAttributes="true"/>
+      <resourceUri>/PS-PKG-OEM1-01/calculationviews/CV_WARR_SERVICE_SPARE_PARTS</resourceUri>
+    </DataSource>
+    <DataSource id="PS_TBTX_SALES" type="DATA_BASE_TABLE">
+      <viewAttributes allViewAttributes="true"/>
+      <columnObject schemaName="PS_WARRANTY_ANALYTICS" columnObjectName="PS_TBTX_SALES"/>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="Customers_Expected_To_Move"/>
+        <viewAttribute id="SCORING"/>
+        <viewAttribute id="PROB"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="DEALER"/>
+        <viewAttribute id="CUSTOMER_MOVED"/>
+        <viewAttribute id="CUSTOMER_NOT_SATISFIED"/>
+        <viewAttribute id="DAYS_BETWEEN"/>
+        <viewAttribute id="MILES_COVERED"/>
+        <viewAttribute id="SERVICE_TYPE"/>
+        <viewAttribute id="LAST_EVALVATION"/>
+        <viewAttribute id="CURRENT_EVAL"/>
+        <viewAttribute id="NOTIF_ID"/>
+        <viewAttribute id="CUSTOMER_NOT_SATISFIED_1"/>
+        <viewAttribute id="Consumer_Name"/>
+        <viewAttribute id="CONSUMER_ID"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CV_PAL_CUST_SATISFACTION">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Customers_Expected_To_Move" source="Customers_Expected_To_Move"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SCORING" source="SCORING"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROB" source="PROB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEALER" source="DEALER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_MOVED" source="CUSTOMER_MOVED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_NOT_SATISFIED" source="CUSTOMER_NOT_SATISFIED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DAYS_BETWEEN" source="DAYS_BETWEEN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MILES_COVERED" source="MILES_COVERED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SERVICE_TYPE" source="SERVICE_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_EVALVATION" source="LAST_EVALVATION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CURRENT_EVAL" source="CURRENT_EVAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOTIF_ID" source="NOTIF_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_NOT_SATISFIED_1" source="CUSTOMER_NOT_SATISFIED_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Consumer_Name" source="Consumer_Name"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSUMER_ID" source="CONSUMER_ID"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="Notification"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="Equipment_ID"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="DATE_SQL"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CV_WARR_SERVICE_SPARE_PARTS">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Notification" source="Notification"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Equipment_ID" source="Equipment_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE_SQL" source="DATE_SQL"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinOrder="OUTSIDE_IN" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="Customers_Expected_To_Move"/>
+        <viewAttribute id="SCORING"/>
+        <viewAttribute id="PROB"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="DEALER"/>
+        <viewAttribute id="CUSTOMER_MOVED"/>
+        <viewAttribute id="CUSTOMER_NOT_SATISFIED"/>
+        <viewAttribute id="DAYS_BETWEEN"/>
+        <viewAttribute id="MILES_COVERED"/>
+        <viewAttribute id="SERVICE_TYPE"/>
+        <viewAttribute id="LAST_EVALVATION"/>
+        <viewAttribute id="CURRENT_EVAL"/>
+        <viewAttribute id="NOTIF_ID"/>
+        <viewAttribute id="CUSTOMER_NOT_SATISFIED_1"/>
+        <viewAttribute id="Consumer_Name"/>
+        <viewAttribute id="CONSUMER_ID"/>
+        <viewAttribute id="Equipment_ID"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="DATE_SQL"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Customers_Expected_To_Move" source="Customers_Expected_To_Move"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SCORING" source="SCORING"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROB" source="PROB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEALER" source="DEALER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_MOVED" source="CUSTOMER_MOVED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_NOT_SATISFIED" source="CUSTOMER_NOT_SATISFIED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DAYS_BETWEEN" source="DAYS_BETWEEN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MILES_COVERED" source="MILES_COVERED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SERVICE_TYPE" source="SERVICE_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_EVALVATION" source="LAST_EVALVATION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CURRENT_EVAL" source="CURRENT_EVAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOTIF_ID" source="NOTIF_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_NOT_SATISFIED_1" source="CUSTOMER_NOT_SATISFIED_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Consumer_Name" source="Consumer_Name"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSUMER_ID" source="CONSUMER_ID"/>
+      </input>
+      <input node="#Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Equipment_ID" source="Equipment_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE_SQL" source="DATE_SQL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOTIF_ID" source="Notification"/>
+      </input>
+      <joinAttribute name="NOTIF_ID"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="ConsumerID"/>
+        <viewAttribute id="Company_Code">
+          <filter xsi:type="AccessControl:SingleValueFilter" including="true" value="PASD"/>
+        </viewAttribute>
+        <viewAttribute id="Billing_Date"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#PS_TBTX_SALES">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ConsumerID" source="ConsumerID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Company_Code" source="Company_Code"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Billing_Date" source="Billing_Date"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinOrder="OUTSIDE_IN" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="Customers_Expected_To_Move"/>
+        <viewAttribute id="SCORING"/>
+        <viewAttribute id="PROB"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="DEALER"/>
+        <viewAttribute id="CUSTOMER_MOVED"/>
+        <viewAttribute id="CUSTOMER_NOT_SATISFIED"/>
+        <viewAttribute id="DAYS_BETWEEN"/>
+        <viewAttribute id="MILES_COVERED"/>
+        <viewAttribute id="SERVICE_TYPE"/>
+        <viewAttribute id="LAST_EVALVATION"/>
+        <viewAttribute id="CURRENT_EVAL"/>
+        <viewAttribute id="NOTIF_ID"/>
+        <viewAttribute id="CUSTOMER_NOT_SATISFIED_1"/>
+        <viewAttribute id="Consumer_Name"/>
+        <viewAttribute id="CONSUMER_ID"/>
+        <viewAttribute id="Equipment_ID"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="DATE_SQL"/>
+        <viewAttribute id="Billing_Date"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Customers_Expected_To_Move" source="Customers_Expected_To_Move"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SCORING" source="SCORING"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROB" source="PROB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEALER" source="DEALER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_MOVED" source="CUSTOMER_MOVED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_NOT_SATISFIED" source="CUSTOMER_NOT_SATISFIED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DAYS_BETWEEN" source="DAYS_BETWEEN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MILES_COVERED" source="MILES_COVERED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SERVICE_TYPE" source="SERVICE_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LAST_EVALVATION" source="LAST_EVALVATION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CURRENT_EVAL" source="CURRENT_EVAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NOTIF_ID" source="NOTIF_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_NOT_SATISFIED_1" source="CUSTOMER_NOT_SATISFIED_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Consumer_Name" source="Consumer_Name"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSUMER_ID" source="CONSUMER_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Equipment_ID" source="Equipment_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE_SQL" source="DATE_SQL"/>
+      </input>
+      <input node="#Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Billing_Date" source="Billing_Date"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONSUMER_ID" source="ConsumerID"/>
+      </input>
+      <joinAttribute name="CONSUMER_ID"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_2">
+    <descriptions/>
+    <attributes>
+      <attribute id="SCORING" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SCORING"/>
+        <keyMapping columnObjectName="Join_2" columnName="SCORING"/>
+      </attribute>
+      <attribute id="REGION" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="REGION"/>
+        <keyMapping columnObjectName="Join_2" columnName="REGION"/>
+      </attribute>
+      <attribute id="DEALER" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DEALER"/>
+        <keyMapping columnObjectName="Join_2" columnName="DEALER"/>
+      </attribute>
+      <attribute id="SERVICE_TYPE" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SERVICE_TYPE"/>
+        <keyMapping columnObjectName="Join_2" columnName="SERVICE_TYPE"/>
+      </attribute>
+      <attribute id="NOTIF_ID" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NOTIF_ID"/>
+        <keyMapping columnObjectName="Join_2" columnName="NOTIF_ID"/>
+      </attribute>
+      <attribute id="Consumer_Name" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Consumer_Name"/>
+        <keyMapping columnObjectName="Join_2" columnName="Consumer_Name"/>
+      </attribute>
+      <attribute id="CONSUMER_ID" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CONSUMER_ID"/>
+        <keyMapping columnObjectName="Join_2" columnName="CONSUMER_ID"/>
+      </attribute>
+      <attribute id="Equipment_ID" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Equipment_ID"/>
+        <keyMapping columnObjectName="Join_2" columnName="Equipment_ID"/>
+      </attribute>
+      <attribute id="YEAR" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="YEAR"/>
+        <keyMapping columnObjectName="Join_2" columnName="YEAR"/>
+      </attribute>
+      <attribute id="DATE_SQL" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DATE_SQL"/>
+        <keyMapping columnObjectName="Join_2" columnName="DATE_SQL"/>
+      </attribute>
+      <attribute id="Billing_Date" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_2" columnName="Billing_Date"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="Customers_Expected_To_Move" order="1" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Customers_Expected_To_Move"/>
+        <measureMapping columnObjectName="Join_2" columnName="Customers_Expected_To_Move"/>
+      </measure>
+      <measure id="PROB" order="3" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="PROB"/>
+        <measureMapping columnObjectName="Join_2" columnName="PROB"/>
+      </measure>
+      <measure id="CUSTOMER_MOVED" order="6" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CUSTOMER_MOVED"/>
+        <measureMapping columnObjectName="Join_2" columnName="CUSTOMER_MOVED"/>
+      </measure>
+      <measure id="CUSTOMER_NOT_SATISFIED" order="7" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CUSTOMER_NOT_SATISFIED"/>
+        <measureMapping columnObjectName="Join_2" columnName="CUSTOMER_NOT_SATISFIED"/>
+      </measure>
+      <measure id="DAYS_BETWEEN" order="8" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="DAYS_BETWEEN"/>
+        <measureMapping columnObjectName="Join_2" columnName="DAYS_BETWEEN"/>
+      </measure>
+      <measure id="MILES_COVERED" order="9" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="MILES_COVERED"/>
+        <measureMapping columnObjectName="Join_2" columnName="MILES_COVERED"/>
+      </measure>
+      <measure id="LAST_EVALVATION" order="11" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="LAST_EVALVATION"/>
+        <measureMapping columnObjectName="Join_2" columnName="LAST_EVALVATION"/>
+      </measure>
+      <measure id="CURRENT_EVAL" order="12" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CURRENT_EVAL"/>
+        <measureMapping columnObjectName="Join_2" columnName="CURRENT_EVAL"/>
+      </measure>
+      <measure id="CUSTOMER_NOT_SATISFIED_1" order="14" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CUSTOMER_NOT_SATISFIED_1"/>
+        <measureMapping columnObjectName="Join_2" columnName="CUSTOMER_NOT_SATISFIED_1"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="150"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="0" y="490"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="240" y="500"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="60" y="331"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="300" y="340"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="210" y="220"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

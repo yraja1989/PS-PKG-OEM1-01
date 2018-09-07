@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="CV_WARR_SERVICE_SPARE_PARTS" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
+  <origin/>
+  <descriptions defaultDescription="CV_WARR_SERVICE_SPARE_PARTS"/>
+  <metadata changedAt="2018-08-10 10:56:45.95"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="24"/>
+  <dataSources>
+    <DataSource id="AN_PS_OEM1_SER_ODR_SPARE_PARTS_01" type="ANALYTIC_VIEW">
+      <viewAttributes allViewAttributes="true"/>
+      <resourceUri>/PS-PKG-OEM1-01/analyticviews/AN_PS_OEM1_SER_ODR_SPARE_PARTS_01</resourceUri>
+    </DataSource>
+    <DataSource id="AN_PS_OEM1_SER_ORD_SERVICE_MAT" type="ANALYTIC_VIEW">
+      <viewAttributes allViewAttributes="true"/>
+      <resourceUri>/PS-PKG-OEM1-01/analyticviews/AN_PS_OEM1_SER_ORD_SERVICE_MAT</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="Spare_Parts_Qty"/>
+        <viewAttribute id="Spare_Parts_Cost"/>
+        <viewAttribute id="Notification"/>
+        <viewAttribute id="ProID"/>
+        <viewAttribute id="Pro_Desc"/>
+        <viewAttribute id="CALWEEK"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#AN_PS_OEM1_SER_ODR_SPARE_PARTS_01">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Spare_Parts_Qty" source="Spare_Parts_Qty"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Spare_Parts_Cost" source="Spare_Parts_Cost"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Notification" source="Notification"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ProID" source="ProID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="Pro_Desc"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALWEEK" source="CALWEEK"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="Notification"/>
+        <viewAttribute id="Currency"/>
+        <viewAttribute id="Labor_Cost"/>
+        <viewAttribute id="Units"/>
+        <viewAttribute id="Labor_Hours"/>
+        <viewAttribute id="Item_type"/>
+        <viewAttribute id="Claim"/>
+        <viewAttribute id="Item"/>
+        <viewAttribute id="Notification_ID"/>
+        <viewAttribute id="Assembly"/>
+        <viewAttribute id="Cause_Text"/>
+        <viewAttribute id="Company_Code"/>
+        <viewAttribute id="ProID"/>
+        <viewAttribute id="Pro_Desc"/>
+        <viewAttribute id="Cust_ID"/>
+        <viewAttribute id="Cust_Name"/>
+        <viewAttribute id="Add_ID"/>
+        <viewAttribute id="STATE"/>
+        <viewAttribute id="COUNTRY"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="POSTCODE_ID"/>
+        <viewAttribute id="CITY"/>
+        <viewAttribute id="NAME1"/>
+        <viewAttribute id="Equipment_ID"/>
+        <viewAttribute id="Year_Of_Construction"/>
+        <viewAttribute id="Description"/>
+        <viewAttribute id="Object_Number"/>
+        <viewAttribute id="Model_Number"/>
+        <viewAttribute id="Manuf_SerialNo"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="QUARTER"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="WEEK"/>
+        <viewAttribute id="DATE_SQL"/>
+        <viewAttribute id="KTX"/>
+        <viewAttribute id="LTX"/>
+        <viewAttribute id="CALMONTH"/>
+        <viewAttribute id="Total_Claims"/>
+        <viewAttribute id="Latitude"/>
+        <viewAttribute id="Longitude"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#AN_PS_OEM1_SER_ORD_SERVICE_MAT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Notification" source="Notification"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Currency" source="Currency"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Labor_Cost" source="Labor_Cost"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Units" source="Units"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Labor_Hours" source="Labor_Hours"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Item_type" source="Item_type"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Claim" source="Claim"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Item" source="Item"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Notification_ID" source="Notification_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Assembly" source="Assembly"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Cause_Text" source="Cause_Text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Company_Code" source="Company_Code"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ProID" source="ProID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="Pro_Desc"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Cust_ID" source="Cust_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Cust_Name" source="Cust_Name"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Add_ID" source="Add_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STATE" source="STATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSTCODE_ID" source="POSTCODE_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CITY" source="CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME1" source="NAME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Equipment_ID" source="Equipment_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year_Of_Construction" source="Year_Of_Construction"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Description" source="Description"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Object_Number" source="Object_Number"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Model_Number" source="Model_Number"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Manuf_SerialNo" source="Manuf_SerialNo"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="QUARTER" source="QUARTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WEEK" source="WEEK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE_SQL" source="DATE_SQL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KTX" source="KTX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LTX" source="LTX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_Claims" source="Total_Claims"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Latitude" source="Latitude"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Longitude" source="Longitude"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinOrder="OUTSIDE_IN" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="Notification"/>
+        <viewAttribute id="Currency"/>
+        <viewAttribute id="Labor_Cost"/>
+        <viewAttribute id="Units"/>
+        <viewAttribute id="Labor_Hours"/>
+        <viewAttribute id="Item_type"/>
+        <viewAttribute id="Claim"/>
+        <viewAttribute id="Item"/>
+        <viewAttribute id="Notification_ID"/>
+        <viewAttribute id="Assembly"/>
+        <viewAttribute id="Cause_Text"/>
+        <viewAttribute id="Company_Code"/>
+        <viewAttribute id="ProID"/>
+        <viewAttribute id="Pro_Desc"/>
+        <viewAttribute id="Cust_ID"/>
+        <viewAttribute id="Cust_Name"/>
+        <viewAttribute id="Add_ID"/>
+        <viewAttribute id="STATE"/>
+        <viewAttribute id="COUNTRY"/>
+        <viewAttribute id="REGION"/>
+        <viewAttribute id="POSTCODE_ID"/>
+        <viewAttribute id="CITY"/>
+        <viewAttribute id="NAME1"/>
+        <viewAttribute id="Equipment_ID"/>
+        <viewAttribute id="Year_Of_Construction"/>
+        <viewAttribute id="Description"/>
+        <viewAttribute id="Object_Number"/>
+        <viewAttribute id="Model_Number"/>
+        <viewAttribute id="Manuf_SerialNo"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="QUARTER"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="WEEK"/>
+        <viewAttribute id="DATE_SQL"/>
+        <viewAttribute id="KTX"/>
+        <viewAttribute id="LTX"/>
+        <viewAttribute id="CALMONTH"/>
+        <viewAttribute id="Spare_Parts_Qty"/>
+        <viewAttribute id="Spare_Parts_Cost"/>
+        <viewAttribute id="ProID_1"/>
+        <viewAttribute id="Pro_Desc_1"/>
+        <viewAttribute id="Total_Claims"/>
+        <viewAttribute id="Latitude"/>
+        <viewAttribute id="Longitude"/>
+        <viewAttribute id="CALWEEK"/>
+        <viewAttribute hidden="true" id="JOIN$Notification$Notification"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Spare_Parts_Qty" source="Spare_Parts_Qty"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Spare_Parts_Cost" source="Spare_Parts_Cost"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ProID_1" source="ProID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc_1" source="Pro_Desc"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALWEEK" source="CALWEEK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$Notification$Notification" source="Notification"/>
+      </input>
+      <input node="#Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Notification" source="Notification"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Currency" source="Currency"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Labor_Cost" source="Labor_Cost"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Units" source="Units"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Labor_Hours" source="Labor_Hours"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Item_type" source="Item_type"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Claim" source="Claim"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Item" source="Item"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Notification_ID" source="Notification_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Assembly" source="Assembly"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Cause_Text" source="Cause_Text"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Company_Code" source="Company_Code"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ProID" source="ProID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="Pro_Desc"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Cust_ID" source="Cust_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Cust_Name" source="Cust_Name"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Add_ID" source="Add_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="STATE" source="STATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSTCODE_ID" source="POSTCODE_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CITY" source="CITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NAME1" source="NAME1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Equipment_ID" source="Equipment_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year_Of_Construction" source="Year_Of_Construction"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Description" source="Description"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Object_Number" source="Object_Number"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Model_Number" source="Model_Number"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Manuf_SerialNo" source="Manuf_SerialNo"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="QUARTER" source="QUARTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WEEK" source="WEEK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE_SQL" source="DATE_SQL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="KTX" source="KTX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LTX" source="LTX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Total_Claims" source="Total_Claims"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Latitude" source="Latitude"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Longitude" source="Longitude"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$Notification$Notification" source="Notification"/>
+      </input>
+      <joinAttribute name="JOIN$Notification$Notification"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="Notification" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="Notification"/>
+      </attribute>
+      <attribute id="Currency" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="Currency"/>
+      </attribute>
+      <attribute id="Units" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="Units"/>
+      </attribute>
+      <attribute id="Item_type" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="Item_type"/>
+      </attribute>
+      <attribute id="Item" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="Item"/>
+      </attribute>
+      <attribute id="Notification_ID" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="Notification_ID"/>
+      </attribute>
+      <attribute id="Assembly" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Model_ID"/>
+        <keyMapping columnObjectName="Join_1" columnName="Assembly"/>
+      </attribute>
+      <attribute id="Cause_Text" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cause Text"/>
+        <keyMapping columnObjectName="Join_1" columnName="Cause_Text"/>
+      </attribute>
+      <attribute id="Company_Code" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Company Code"/>
+        <keyMapping columnObjectName="Join_1" columnName="Company_Code"/>
+      </attribute>
+      <attribute id="ProID" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ServiceType_ID"/>
+        <keyMapping columnObjectName="Join_1" columnName="ProID"/>
+      </attribute>
+      <attribute id="Pro_Desc" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Service Type"/>
+        <keyMapping columnObjectName="Join_1" columnName="Pro_Desc"/>
+      </attribute>
+      <attribute id="Cust_ID" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Dealer ID"/>
+        <keyMapping columnObjectName="Join_1" columnName="Cust_ID"/>
+      </attribute>
+      <attribute id="Cust_Name" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Dealers"/>
+        <keyMapping columnObjectName="Join_1" columnName="Cust_Name"/>
+      </attribute>
+      <attribute id="Add_ID" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Dealer Add ID"/>
+        <keyMapping columnObjectName="Join_1" columnName="Add_ID"/>
+      </attribute>
+      <attribute id="STATE" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="State"/>
+        <keyMapping columnObjectName="Join_1" columnName="STATE"/>
+      </attribute>
+      <attribute id="COUNTRY" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Country"/>
+        <keyMapping columnObjectName="Join_1" columnName="COUNTRY"/>
+      </attribute>
+      <attribute id="REGION" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Region"/>
+        <keyMapping columnObjectName="Join_1" columnName="REGION"/>
+      </attribute>
+      <attribute id="POSTCODE_ID" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Postal Code"/>
+        <keyMapping columnObjectName="Join_1" columnName="POSTCODE_ID"/>
+      </attribute>
+      <attribute id="CITY" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="City"/>
+        <keyMapping columnObjectName="Join_1" columnName="CITY"/>
+      </attribute>
+      <attribute id="NAME1" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Name"/>
+        <keyMapping columnObjectName="Join_1" columnName="NAME1"/>
+      </attribute>
+      <attribute id="Equipment_ID" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="Equipment_ID"/>
+      </attribute>
+      <attribute id="Year_Of_Construction" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="Year_Of_Construction"/>
+      </attribute>
+      <attribute id="Description" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Model "/>
+        <keyMapping columnObjectName="Join_1" columnName="Description"/>
+      </attribute>
+      <attribute id="Object_Number" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_1" columnName="Object_Number"/>
+      </attribute>
+      <attribute id="Model_Number" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription=" Model_ID"/>
+        <keyMapping columnObjectName="Join_1" columnName="Model_Number"/>
+      </attribute>
+      <attribute id="Manuf_SerialNo" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Manuf_SerialNo"/>
+        <keyMapping columnObjectName="Join_1" columnName="Manuf_SerialNo"/>
+      </attribute>
+      <attribute id="YEAR" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Year"/>
+        <keyMapping columnObjectName="Join_1" columnName="YEAR"/>
+      </attribute>
+      <attribute id="MONTH" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Month Int"/>
+        <keyMapping columnObjectName="Join_1" columnName="MONTH"/>
+      </attribute>
+      <attribute id="QUARTER" order="32" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Quarter"/>
+        <keyMapping columnObjectName="Join_1" columnName="QUARTER"/>
+      </attribute>
+      <attribute id="WEEK" order="33" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Week"/>
+        <keyMapping columnObjectName="Join_1" columnName="WEEK"/>
+      </attribute>
+      <attribute id="DATE_SQL" order="34" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Date"/>
+        <keyMapping columnObjectName="Join_1" columnName="DATE_SQL"/>
+      </attribute>
+      <attribute id="KTX" order="35" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Month"/>
+        <keyMapping columnObjectName="Join_1" columnName="KTX"/>
+      </attribute>
+      <attribute id="LTX" order="36" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Month"/>
+        <keyMapping columnObjectName="Join_1" columnName="LTX"/>
+      </attribute>
+      <attribute id="CALMONTH" order="37" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Notification CalMonth"/>
+        <keyMapping columnObjectName="Join_1" columnName="CALMONTH"/>
+      </attribute>
+      <attribute id="ProID_1" order="40" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SpareParts_ID"/>
+        <keyMapping columnObjectName="Join_1" columnName="ProID_1"/>
+      </attribute>
+      <attribute id="Pro_Desc_1" order="41" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Spare Parts"/>
+        <keyMapping columnObjectName="Join_1" columnName="Pro_Desc_1"/>
+      </attribute>
+      <attribute id="Latitude" order="46" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Latitude"/>
+        <keyMapping columnObjectName="Join_1" columnName="Latitude"/>
+      </attribute>
+      <attribute id="Longitude" order="47" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Longitude"/>
+        <keyMapping columnObjectName="Join_1" columnName="Longitude"/>
+      </attribute>
+      <attribute id="DATE_SQL_1" order="48" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DATE_SQL_1"/>
+        <keyMapping columnObjectName="Join_1" columnName="DATE_SQL"/>
+      </attribute>
+      <attribute id="CALWEEK" order="49" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CALWEEK"/>
+        <keyMapping columnObjectName="Join_1" columnName="CALWEEK"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="Labor_Cost" order="3" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Labor Cost (USD)"/>
+        <measureMapping columnObjectName="Join_1" columnName="Labor_Cost"/>
+      </measure>
+      <measure id="Labor_Hours" order="5" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Labor Hours"/>
+        <measureMapping columnObjectName="Join_1" columnName="Labor_Hours"/>
+      </measure>
+      <measure id="Claim" order="7" aggregationType="sum" engineAggregation="count" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="Join_1" columnName="Claim"/>
+      </measure>
+      <measure id="Spare_Parts_Qty" order="38" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Spare Qty"/>
+        <measureMapping columnObjectName="Join_1" columnName="Spare_Parts_Qty"/>
+      </measure>
+      <measure id="Spare_Parts_Cost" order="39" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Spare Cost (USD)"/>
+        <measureMapping columnObjectName="Join_1" columnName="Spare_Parts_Cost"/>
+      </measure>
+      <measure id="Total_Claims" order="45" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Total Claims"/>
+        <measureMapping columnObjectName="Join_1" columnName="Total_Claims"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="Avg_Labor_Cost_Per_Claims" hidden="false" order="42" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="2">
+        <descriptions defaultDescription="Avg. Labor Cost Per Claim"/>
+        <formula>&quot;Labor_Cost&quot;/&quot;Total_Claims&quot; </formula>
+      </measure>
+      <measure id="Avg_Labor_Hour_Per_Claims" hidden="false" order="43" aggregationType="sum" measureType="simple" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="Avg. Labor Hour Per Claim"/>
+        <formula>&quot;Labor_Hours&quot;/&quot;Total_Claims&quot;</formula>
+      </measure>
+      <measure id="Avg_Labor_Cost_Per_Hour" hidden="false" order="44" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="15" scale="2">
+        <descriptions defaultDescription="Avg. Labor Cost Per Hour"/>
+        <formula>&quot;Labor_Cost&quot;/&quot;Labor_Hours&quot;</formula>
+      </measure>
+      <measure id="Total_Cost" hidden="false" order="50" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="13" scale="2">
+        <descriptions defaultDescription="Total Cost"/>
+        <formula>&quot;Labor_Cost&quot;+&quot;Spare_Parts_Cost&quot;</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="false" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="80" y="90"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="20" y="346"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="200" y="346"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="100" y="180"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

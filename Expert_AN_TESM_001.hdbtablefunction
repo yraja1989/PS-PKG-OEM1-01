@@ -1,0 +1,20 @@
+FUNCTION "PS_WARRANTY_ANALYTICS"."PS-PKG-OEM1-01::Expert_AN_TESM_001" ( ) 
+	RETURNS TABLE (
+	"Year" nvarchar(4),
+	"Month" nvarchar(3),
+	"Claims" Double,
+	"Date" date,
+	"PredictedValues" double
+	
+	
+	)
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER AS
+BEGIN
+/***************************** 
+	Write your function logic
+ *****************************/
+ 
+ return
+ select * from "PAL_RY"."VIEW_RY_TEST123";
+END;

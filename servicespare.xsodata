@@ -1,0 +1,53 @@
+service
+{
+	"PS-PKG-OEM1-01::CV_WARR_SERVICE_SPARE_PARTS" as "TotalClaims"
+	with ( "Notification","Cust_ID","Spare_Parts_Qty","Description","Cust_Name","DATE_SQL","Pro_Desc","Pro_Desc_1","Spare_Parts_Cost","Total_Claims","YEAR","REGION","COUNTRY","QUARTER","LTX","Currency","Units")
+	//key("Notification","Cust_ID")
+	keys generate local "GenID"
+//	navigates ( "PS_OEM_CLAIMS" as "OEM_Claims" )
+	aggregates always (SUM of "Spare_Parts_Qty",SUM of "Spare_Parts_Cost",SUM of "Total_Claims");
+	
+	//"PKG_OEM001_AUTH::AN_OEM1_SER_ODR_SPARE_PARTS_01" as "OEM_Claims"
+//	with ("Cust_ID","Cust_Name","CITY","D_STATE","D_YEAR","D_REGION","D_COUNTRTY","POSTCODE_ID","D_DATE_SQL","Spare_Parts_Qty","Spare_Parts_Cost","Total_Claims","Currency","Units")
+//	//key ("Cust_ID")
+//	keys generate local "GenID"
+//	navigates ("PS_SPARPARTS_CLAIMS" as "Spare_Parts_Claims")
+//	aggregates always (SUM of "Spare_Parts_Qty",SUM of "Spare_Parts_Cost",SUM of "Total_Claims");
+	
+//	"PKG_OEM001_AUTH::AN_OEM1_SER_ODR_SPARE_PARTS_01" as "Spare_Parts_Claims"
+//	with ("Cust_ID","Pro_ID","Spare_Parts","Model","D_YEAR","D_STATE","D_REGION","D_DATE_SQL","Spare_Parts_Qty","Spare_Parts_Cost","Total_Claims","Currency","Units")
+//	//key("Cust_ID","Pro_ID","Model","Spare_Parts","D_YEAR","D_STATE")
+//	keys generate local "GenID"
+//	navigates ("PS_MODEL_CLAIMS" as "Model_Claims","PS_SPARE_PARTS_CLAIMS" as "Spare_Parts_Wise_Claims" )
+//	aggregates always (SUM of "Spare_Parts_Qty",SUM of "Spare_Parts_Cost",SUM of "Total_Claims");
+	
+//	"PKG_OEM001_AUTH::AN_OEM1_SER_ODR_SPARE_PARTS_01" as "Spare_Parts_Wise_Claims"
+//	with ("Spare_Parts","Spare_Parts_Qty","Spare_Parts_Cost","Total_Claims","Dealer","Currency","Units")
+//	//key ("Spare_Parts","Dealer")
+//	keys generate local "GenID"
+//	aggregates always (SUM of "Spare_Parts_Qty",SUM of "Spare_Parts_Cost",SUM of "Total_Claims");
+	
+//	"PKG_OEM001_AUTH::AN_OEM1_SER_ODR_SPARE_PARTS_01" as "Model_Claims"
+//	with ( "Model","Spare_Parts_Qty","Spare_Parts_Cost","Total_Claims","Currency")
+//	//key("Model")
+//	keys generate local "GenID"
+//	aggregates always (SUM of "Spare_Parts_Qty",SUM of "Spare_Parts_Cost",SUM of "Total_Claims");
+	
+//	association "PS_OEM_CLAIMS"
+//	principal "TotalClaims" ("Cust_ID") multiplicity "1"
+//	dependent "OEM_Claims" ("Cust_ID")  multiplicity "*";
+	
+//	association "PS_SPARPARTS_CLAIMS"
+//	principal "OEM_Claims" ("Cust_ID") multiplicity "1"
+//	dependent "Spare_Parts_Claims" ("Cust_ID")  multiplicity "*";
+	
+//	association "PS_SPARE_PARTS_CLAIMS"
+//	principal "Spare_Parts_Claims" ("Spare_Parts") multiplicity "1"
+//	dependent "Spare_Parts_Wise_Claims"("Spare_Parts")  multiplicity "*";
+	
+//	association "PS_MODEL_CLAIMS"
+//	principal "Spare_Parts_Claims"("Model") multiplicity "1"
+//	dependent "Model_Claims" ("Model")  multiplicity "*";
+	
+}
+annotations {   enable OData4SAP;}

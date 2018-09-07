@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="CV_PROJECTED_SPARECOST_SERVICE_TYPE" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
+  <descriptions defaultDescription="Projected Spare Cost By Service Type"/>
+  <metadata changedAt="2018-08-17 16:31:50.707"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="52"/>
+  <dataSources>
+    <DataSource id="CV_PS_PAL_AC_SPARE_COST" type="CALCULATION_VIEW">
+      <viewAttributes allViewAttributes="true"/>
+      <resourceUri>/PS-PKG-OEM1-01/calculationviews/CV_PS_PAL_AC_SPARE_COST</resourceUri>
+    </DataSource>
+    <DataSource id="CV_PS_PAL_AIRBAG_SPARE_COST" type="CALCULATION_VIEW">
+      <viewAttributes allViewAttributes="true"/>
+      <resourceUri>/PS-PKG-OEM1-01/calculationviews/CV_PS_PAL_AIRBAG_SPARE_COST</resourceUri>
+    </DataSource>
+    <DataSource id="CV_PS_PAL_ALIGNMENT_SPARE_COST" type="CALCULATION_VIEW">
+      <viewAttributes allViewAttributes="true"/>
+      <resourceUri>/PS-PKG-OEM1-01/calculationviews/CV_PS_PAL_ALIGNMENT_SPARE_COST</resourceUri>
+    </DataSource>
+    <DataSource id="CV_PS_PAL_BRAKE_SPARE_COST" type="CALCULATION_VIEW">
+      <viewAttributes allViewAttributes="true"/>
+      <resourceUri>/PS-PKG-OEM1-01/calculationviews/CV_PS_PAL_BRAKE_SPARE_COST</resourceUri>
+    </DataSource>
+    <DataSource id="CV_PS_PAL_DRIVETRAIN_SPARE_COST" type="CALCULATION_VIEW">
+      <viewAttributes allViewAttributes="true"/>
+      <resourceUri>/PS-PKG-OEM1-01/calculationviews/CV_PS_PAL_DRIVETRAIN_SPARE_COST</resourceUri>
+    </DataSource>
+    <DataSource id="CV_PS_PAL_ENGINE_SPARE_COST" type="CALCULATION_VIEW">
+      <viewAttributes allViewAttributes="true"/>
+      <resourceUri>/PS-PKG-OEM1-01/calculationviews/CV_PS_PAL_ENGINE_SPARE_COST</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CALMONTH"/>
+        <viewAttribute id="CC_Month_LastDate"/>
+        <viewAttribute id="CC_Predicted_Values"/>
+        <viewAttribute id="Month"/>
+        <viewAttribute id="PredictedValues"/>
+        <viewAttribute id="Pro_Desc"/>
+        <viewAttribute id="Spare_Parts_Cost"/>
+        <viewAttribute id="Year"/>
+        <viewAttribute id="CC_AC_Service_Type"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CV_PS_PAL_AC_SPARE_COST">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Month_LastDate" source="CC_Month_LastDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Predicted_Values" source="CC_Predicted_Values"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Month" source="Month"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PredictedValues" source="PredictedValues"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="Pro_Desc"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Spare_Parts_Cost" source="Spare_Parts_Cost"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year" source="Year"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_AC_Service_Type" source="CC_AC_Service_Type"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CALMONTH"/>
+        <viewAttribute id="CC_Month_LastDate"/>
+        <viewAttribute id="CC_Predicted_Values"/>
+        <viewAttribute id="Month"/>
+        <viewAttribute id="PredictedValues"/>
+        <viewAttribute id="Pro_Desc"/>
+        <viewAttribute id="Spare_Parts_Cost"/>
+        <viewAttribute id="Year"/>
+        <viewAttribute id="CC_Airbag_Service_Type"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CV_PS_PAL_AIRBAG_SPARE_COST">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Month_LastDate" source="CC_Month_LastDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Predicted_Values" source="CC_Predicted_Values"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Month" source="Month"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PredictedValues" source="PredictedValues"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="Pro_Desc"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Spare_Parts_Cost" source="Spare_Parts_Cost"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year" source="Year"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Airbag_Service_Type" source="CC_Airbag_Service_Type"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CALMONTH"/>
+        <viewAttribute id="CC_Month_LastDate"/>
+        <viewAttribute id="CC_Predicted_Values"/>
+        <viewAttribute id="Month"/>
+        <viewAttribute id="PredictedValues"/>
+        <viewAttribute id="Pro_Desc"/>
+        <viewAttribute id="Spare_Parts_Cost"/>
+        <viewAttribute id="Year"/>
+        <viewAttribute id="CC_Alignment_Service_Type"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CV_PS_PAL_ALIGNMENT_SPARE_COST">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Month_LastDate" source="CC_Month_LastDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Predicted_Values" source="CC_Predicted_Values"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Month" source="Month"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PredictedValues" source="PredictedValues"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="Pro_Desc"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Spare_Parts_Cost" source="Spare_Parts_Cost"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year" source="Year"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Alignment_Service_Type" source="CC_Alignment_Service_Type"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CALMONTH"/>
+        <viewAttribute id="CC_Month_LastDate"/>
+        <viewAttribute id="CC_Predicted_Values"/>
+        <viewAttribute id="Month"/>
+        <viewAttribute id="PredictedValues"/>
+        <viewAttribute id="Pro_Desc"/>
+        <viewAttribute id="Spare_Parts_Cost"/>
+        <viewAttribute id="Year"/>
+        <viewAttribute id="CC_Brake_Service_Type"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CV_PS_PAL_BRAKE_SPARE_COST">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Month_LastDate" source="CC_Month_LastDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Predicted_Values" source="CC_Predicted_Values"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Month" source="Month"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PredictedValues" source="PredictedValues"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="Pro_Desc"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Spare_Parts_Cost" source="Spare_Parts_Cost"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year" source="Year"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Brake_Service_Type" source="CC_Brake_Service_Type"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_5">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CALMONTH"/>
+        <viewAttribute id="CC_Month_LastDate"/>
+        <viewAttribute id="CC_Predicted_Values"/>
+        <viewAttribute id="Month"/>
+        <viewAttribute id="PredictedValues"/>
+        <viewAttribute id="Pro_Desc"/>
+        <viewAttribute id="Spare_Parts_Cost"/>
+        <viewAttribute id="Year"/>
+        <viewAttribute id="CC_Drivetrain_Service_Type"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CV_PS_PAL_DRIVETRAIN_SPARE_COST">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Month_LastDate" source="CC_Month_LastDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Predicted_Values" source="CC_Predicted_Values"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Month" source="Month"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PredictedValues" source="PredictedValues"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="Pro_Desc"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Spare_Parts_Cost" source="Spare_Parts_Cost"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year" source="Year"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Drivetrain_Service_Type" source="CC_Drivetrain_Service_Type"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_6">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="CALMONTH"/>
+        <viewAttribute id="CC_Month_LastDate"/>
+        <viewAttribute id="CC_Predicted_Values"/>
+        <viewAttribute id="Month"/>
+        <viewAttribute id="PredictedValues"/>
+        <viewAttribute id="Pro_Desc"/>
+        <viewAttribute id="Spare_Parts_Cost"/>
+        <viewAttribute id="Year"/>
+        <viewAttribute id="CC_Engine_Service_Type"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CV_PS_PAL_ENGINE_SPARE_COST">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CALMONTH" source="CALMONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Month_LastDate" source="CC_Month_LastDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Predicted_Values" source="CC_Predicted_Values"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Month" source="Month"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PredictedValues" source="PredictedValues"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="Pro_Desc"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Spare_Parts_Cost" source="Spare_Parts_Cost"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year" source="Year"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Engine_Service_Type" source="CC_Engine_Service_Type"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="Year"/>
+        <viewAttribute id="Month"/>
+        <viewAttribute id="Pro_Desc"/>
+        <viewAttribute id="Spare_Parts_Cost"/>
+        <viewAttribute id="CC_Predicted_Values"/>
+        <viewAttribute id="Spare_Parts_Cost_1"/>
+        <viewAttribute id="CC_Predicted_Values_1"/>
+        <viewAttribute id="Spare_Parts_Cost_2"/>
+        <viewAttribute id="CC_Predicted_Values_2"/>
+        <viewAttribute id="Spare_Parts_Cost_3"/>
+        <viewAttribute id="CC_Predicted_Values_3"/>
+        <viewAttribute id="Spare_Parts_Cost_4"/>
+        <viewAttribute id="CC_Predicted_Values_4"/>
+        <viewAttribute id="Spare_Parts_Cost_5"/>
+        <viewAttribute id="CC_Predicted_Values_5"/>
+      
+        <viewAttribute id="ALL_Spare_Cost"/>
+        <viewAttribute id="ALL_Projected_Cost"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year" source="Year"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Month" source="Month"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Spare_Parts_Cost" source="Spare_Parts_Cost"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Predicted_Values" source="CC_Predicted_Values"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost_2" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values_2" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost_3" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values_3" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost_4" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values_4" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost_5" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values_5" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="CC_AC_Service_Type"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="ALL_Spare_Cost" source="Spare_Parts_Cost"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ALL_Projected_Cost" source="CC_Predicted_Values"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year" source="Year"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Month" source="Month"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Spare_Parts_Cost_1" source="Spare_Parts_Cost"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Predicted_Values_1" source="CC_Predicted_Values"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost_2" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values_2" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost_3" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values_3" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost_4" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values_4" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost_5" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values_5" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="CC_Airbag_Service_Type"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="ALL_Spare_Cost" source="Spare_Parts_Cost"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ALL_Projected_Cost" source="CC_Predicted_Values"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year" source="Year"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Month" source="Month"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Spare_Parts_Cost_2" source="Spare_Parts_Cost"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Predicted_Values_2" source="CC_Predicted_Values"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost_3" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values_3" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost_4" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values_4" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost_5" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values_5" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="CC_Alignment_Service_Type"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="ALL_Spare_Cost" source="Spare_Parts_Cost"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ALL_Projected_Cost" source="CC_Predicted_Values"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Projection_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year" source="Year"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Month" source="Month"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost_2" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values_2" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Spare_Parts_Cost_3" source="Spare_Parts_Cost"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Predicted_Values_3" source="CC_Predicted_Values"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost_4" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values_4" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost_5" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values_5" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="CC_Brake_Service_Type"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="ALL_Spare_Cost" source="Spare_Parts_Cost"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ALL_Projected_Cost" source="CC_Predicted_Values"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Projection_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year" source="Year"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Month" source="Month"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost_2" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values_2" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost_3" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values_3" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Spare_Parts_Cost_4" source="Spare_Parts_Cost"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Predicted_Values_4" source="CC_Predicted_Values"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost_5" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values_5" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="CC_Drivetrain_Service_Type"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="ALL_Spare_Cost" source="Spare_Parts_Cost"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ALL_Projected_Cost" source="CC_Predicted_Values"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Projection_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Year" source="Year"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Month" source="Month"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values_1" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost_2" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values_2" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost_3" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values_3" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="Spare_Parts_Cost_4" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CC_Predicted_Values_4" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Spare_Parts_Cost_5" source="Spare_Parts_Cost"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CC_Predicted_Values_5" source="CC_Predicted_Values"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Pro_Desc" source="CC_Engine_Service_Type"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="ALL_Spare_Cost" source="Spare_Parts_Cost"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ALL_Projected_Cost" source="CC_Predicted_Values"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Union_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="Year" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Year"/>
+        <keyMapping columnObjectName="Union_1" columnName="Year"/>
+      </attribute>
+      <attribute id="Month" order="2" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Month"/>
+        <keyMapping columnObjectName="Union_1" columnName="Month"/>
+      </attribute>
+      <attribute id="Pro_Desc" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Pro_Desc"/>
+        <keyMapping columnObjectName="Union_1" columnName="Pro_Desc"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="AC_Actual_Spare_Cost" order="4" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="AC Actual Spare Cost"/>
+        <measureMapping columnObjectName="Union_1" columnName="Spare_Parts_Cost"/>
+      </measure>
+      <measure id="AC_Projected_Spare_Cost" order="5" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="AC Projected Spare Cost"/>
+        <measureMapping columnObjectName="Union_1" columnName="CC_Predicted_Values"/>
+      </measure>
+      <measure id="Airbag_Actual_Spare_Cost" order="6" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Airbag Actual Spare Cost"/>
+        <measureMapping columnObjectName="Union_1" columnName="Spare_Parts_Cost_1"/>
+      </measure>
+      <measure id="Airbag_Projected_Spare_Cost" order="7" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Airbag Projected Spare Cost"/>
+        <measureMapping columnObjectName="Union_1" columnName="CC_Predicted_Values_1"/>
+      </measure>
+      <measure id="Alignment_Actual_Spare_Cost" order="8" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Alignment Actual Spare Cost"/>
+        <measureMapping columnObjectName="Union_1" columnName="Spare_Parts_Cost_2"/>
+      </measure>
+      <measure id="Alignment_Projected_Spare_Cost" order="9" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Alignment Projected Spare Cost"/>
+        <measureMapping columnObjectName="Union_1" columnName="CC_Predicted_Values_2"/>
+      </measure>
+      <measure id="Brake_Actual_Spare_Cost" order="10" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Brake Actual Spare Cost"/>
+        <measureMapping columnObjectName="Union_1" columnName="Spare_Parts_Cost_3"/>
+      </measure>
+      <measure id="Brake_Projected_Spare_Cost" order="11" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Brake Projected Spare Cost"/>
+        <measureMapping columnObjectName="Union_1" columnName="CC_Predicted_Values_3"/>
+      </measure>
+      <measure id="Drivetrain_Actual_Spare_Cost" order="12" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Drivetrain Actual Spare Cost"/>
+        <measureMapping columnObjectName="Union_1" columnName="Spare_Parts_Cost_4"/>
+      </measure>
+      <measure id="Drivetrain_Projected_Spare_Cost" order="13" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Drivetrain Projected Spare Cost"/>
+        <measureMapping columnObjectName="Union_1" columnName="CC_Predicted_Values_4"/>
+      </measure>
+      <measure id="Engine_Actual_Spare_Cost" order="14" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Engine Actual Spare Cost"/>
+        <measureMapping columnObjectName="Union_1" columnName="Spare_Parts_Cost_5"/>
+      </measure>
+      <measure id="Engine_Projected_Spare_Cost" order="15" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Engine Projected Spare Cost"/>
+        <measureMapping columnObjectName="Union_1" columnName="CC_Predicted_Values_5"/>
+      </measure>
+    
+      <measure id="ALL_Spare_Cost" order="16" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ALL_Spare_Cost"/>
+        <measureMapping columnObjectName="Union_1" columnName="ALL_Spare_Cost"/>
+      </measure>
+      <measure id="ALL_Projected_Cost" order="17" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ALL_Projected_Cost"/>
+        <measureMapping columnObjectName="Union_1" columnName="ALL_Projected_Cost"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="240" y="100"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="-270" y="420"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="-100" y="420"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="60" y="420"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="220" y="420"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="379" y="420"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="540" y="420"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="240" y="190"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

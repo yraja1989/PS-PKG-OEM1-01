@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="CV_PS_PAL_ALIGNMENT_CLAIMS" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
+  <origin/>
+  <descriptions defaultDescription="CV_PS_PAL_ALIGNMENT_CLAIMS"/>
+  <metadata changedAt="2018-08-17 12:42:26.235"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="34"/>
+  <dataSources>
+    <DataSource id="PAS_TF_PAL_ALIGNMENT_CLAIMS" type="TABLE_FUNCTION">
+      <resourceUri>PS-PKG-OEM1-01::PAS_TF_PAL_ALIGNMENT_CLAIMS</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="PAS_TF_PAL_ALIGNMENT_CLAIMS">
+    <descriptions/>
+    <attributes>
+      <attribute id="Pro_Desc" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Pro_Desc"/>
+        <keyMapping columnObjectName="PAS_TF_PAL_ALIGNMENT_CLAIMS" columnName="Pro_Desc"/>
+      </attribute>
+      <attribute id="CC_Month_LastDate" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CC_Month_LastDate"/>
+        <keyMapping columnObjectName="PAS_TF_PAL_ALIGNMENT_CLAIMS" columnName="CC_Month_LastDate"/>
+      </attribute>
+      <attribute id="CALMONTH" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CALMONTH"/>
+        <keyMapping columnObjectName="PAS_TF_PAL_ALIGNMENT_CLAIMS" columnName="CALMONTH"/>
+      </attribute>
+      <attribute id="Year" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Year"/>
+        <keyMapping columnObjectName="PAS_TF_PAL_ALIGNMENT_CLAIMS" columnName="Year"/>
+      </attribute>
+      <attribute id="Month" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Month"/>
+        <keyMapping columnObjectName="PAS_TF_PAL_ALIGNMENT_CLAIMS" columnName="Month"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="CC_Alignment_Service_Type" hidden="false" order="8" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Alignment Service Type"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="20">
+          <formula>'Alignment'</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="Actual" order="3" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Actual"/>
+        <measureMapping columnObjectName="PAS_TF_PAL_ALIGNMENT_CLAIMS" columnName="Claims"/>
+      </measure>
+      <measure id="Projected" order="7" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Projected"/>
+        <measureMapping columnObjectName="PAS_TF_PAL_ALIGNMENT_CLAIMS" columnName="PredictedValues"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>
